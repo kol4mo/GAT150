@@ -69,14 +69,14 @@ void FunGame::update(float dt)
 			m_scene->Add(std::move(enemy));
 		}
 
-		difcur = std::fabs(30* std::sin(10*(m_level-1)));
+		difcur = (int)std::fabs((30* std::sin(10*(m_level-1))));
 		for (int i = 0; i < difcur; i++) {
 			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(200, 0, enemy->randomWallPos(4), hop::g_modelManager.Get("bullet.txt"));
 			enemy->m_tag = "Enemy";
 			enemy->m_game = this;
 			m_scene->Add(std::move(enemy));
 		}		
-		difcur = std::fabs(30* (1- fabs(std::sin(5*(m_level-1)))));
+		difcur = (int)std::fabs(30* (1- fabs(std::sin(5*(m_level-1)))));
 		for (int i = 0; i < difcur; i++) {
 			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(300, 0, enemy->randomWallPos(2), hop::g_modelManager.Get("bullet.txt"));
 			enemy->m_tag = "Enemy";

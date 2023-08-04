@@ -24,8 +24,8 @@ void Player::Update(float dt)
 	addForce(forward * m_speed);
 
 	//m_transform.position += forward * m_speed * hop::g_time.GetDeltaTime();
-	m_transform.position.x = hop::Wrap(m_transform.position.x, hop::g_renderer.GetWidth());
-	m_transform.position.y = hop::Wrap(m_transform.position.y, hop::g_renderer.GetHeight());
+	m_transform.position.x = (float)hop::Wrap((int)m_transform.position.x, (int)hop::g_renderer.GetWidth());
+	m_transform.position.y = (float)hop::Wrap((int)m_transform.position.y, (int)hop::g_renderer.GetHeight());
 
 	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !hop::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE)) {
 

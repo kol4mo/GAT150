@@ -15,7 +15,7 @@ namespace hop
 		void Update(float dt);
 		void Draw(Renderer& renderer);
 
-		int getLength() { return m_actors.size(); }
+		int getLength() { return (int)m_actors.size(); }
 
 		Actor* GetActor(std::string tag);
 

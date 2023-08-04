@@ -1,4 +1,5 @@
 #include "Core/core.h"
+#include "Core/logger.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/ModelManager.h"
 #include "Input/InputSystem.h"
@@ -8,6 +9,7 @@
 #include "Framework/Scene.h"
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
+#include "Renderer/Texture.h"
 #include "FunGame.h"
 #include "Renderer/ParticleSystem.h"
 #include <iostream>
@@ -44,8 +46,13 @@ public :
 	hop::vec2 m_vel;
 };
 
+
+
 int main(int argc, char* argv[])
 {
+
+
+	INFO_LOG("hello world");
 
 	hop::MemoryTracker::Initialize();
 
@@ -61,7 +68,9 @@ int main(int argc, char* argv[])
 	unique_ptr<FunGame> game = make_unique<FunGame>();
 	game->Initialize();
 
-	
+	shared_ptr<hop::Texture> texture = make_shared<hop::Texture>();
+	texture->Load("Sans_undertale.jpg", hop::g_renderer);
+
 
 
 
@@ -95,6 +104,7 @@ int main(int argc, char* argv[])
 
 			//text->Draw(hop::g_renderer, 400, 300);
 		game->draw(hop::g_renderer);
+		hop::g_renderer.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
 		hop::g_renderer.EndFrame();
 		//	if (scene.getLength() == 1) {
 		//		end = true;

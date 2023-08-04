@@ -26,9 +26,15 @@ namespace hop
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
 
+		void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
+
+
 		SDL_Renderer* m_renderer = nullptr;
+
+		friend class Texture;
+
 	private:
-		int m_width = 0;
+		int m_width = 0;	
 		int m_height = 0;	
 
 		SDL_Window* m_window = nullptr;

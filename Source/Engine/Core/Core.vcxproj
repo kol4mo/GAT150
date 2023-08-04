@@ -154,6 +154,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="core.h" />
     <ClInclude Include="FileIO.h" />
+    <ClInclude Include="logger.h" />
     <ClInclude Include="MathUtils.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Random.h" />
@@ -163,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileIO.cpp" />
+    <ClCompile Include="logger.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>

@@ -35,7 +35,7 @@ private:
 	eState m_state = eState::Title;
 	int m_level;
 	int difcur;
-	int m_stateTimer;
+	float m_stateTimer;
 	std::shared_ptr<hop::Font> m_font;
 	std::unique_ptr<hop::Text> m_scoreText;
 	std::unique_ptr<hop::Text> m_startText;
