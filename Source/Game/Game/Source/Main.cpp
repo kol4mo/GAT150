@@ -7,6 +7,7 @@
 #include "Audio/AudioSystem.h"
 #include "Player.h"	
 #include "Framework/Scene.h"
+#include "Framework/Resource/ResourceManager.h"
 #include "Renderer/Font.h"
 #include "Renderer/Text.h"
 #include "Renderer/Texture.h"
@@ -46,10 +47,24 @@ public :
 	hop::vec2 m_vel;
 };
 
+void print(int count, ...)
+{
+	va_list args;
 
+
+
+	va_start(args, count);
+	for (int i = 0; i < count; ++i)
+	{
+		std::cout << va_arg(args, const char*) << std::endl;
+	}
+	va_end(args);
+}
 
 int main(int argc, char* argv[])
 {
+
+	print(3, "no", "yes", "maybe");
 
 
 	INFO_LOG("hello world");
@@ -68,8 +83,7 @@ int main(int argc, char* argv[])
 	unique_ptr<FunGame> game = make_unique<FunGame>();
 	game->Initialize();
 
-	shared_ptr<hop::Texture> texture = make_shared<hop::Texture>();
-	texture->Load("Sans_undertale.jpg", hop::g_renderer);
+	hop::res_t<hop::Texture> texture = hop::g_resources.Get<hop::Texture>("Sans_undertale.jpg", hop::g_renderer);
 
 
 
@@ -104,7 +118,7 @@ int main(int argc, char* argv[])
 
 			//text->Draw(hop::g_renderer, 400, 300);
 		game->draw(hop::g_renderer);
-		hop::g_renderer.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
+		//hop::g_renderer.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
 		hop::g_renderer.EndFrame();
 		//	if (scene.getLength() == 1) {
 		//		end = true;

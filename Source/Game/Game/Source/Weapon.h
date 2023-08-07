@@ -4,8 +4,8 @@
 class Weapon : public hop::Actor
 {
 public:
-	Weapon(float speed, const hop::Transform& transform, std::shared_ptr<hop::Model> model) :
-		Actor{ transform, model },
+	Weapon(float speed, const hop::Transform& transform) :
+		Actor{ transform },
 		m_speed{ speed }
 	{
 		m_lifespan = 2.0f;

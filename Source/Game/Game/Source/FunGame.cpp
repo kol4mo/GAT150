@@ -1,8 +1,9 @@
 #include "FunGame.h"
 #include "Player.h"
 #include "Enemy.h"
-
-#include "Framework//Scene.h"
+#include "Framework/Component/SpriteComponent.h"
+#include "Framework/Scene.h"
+#include "Framework/Resource/ResourceManager.h"
 #include "Core/core.h"
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
@@ -14,13 +15,11 @@
 bool FunGame::Initialize()
 {
 
-	m_font = std::make_shared<hop::Font>("Arcade.ttf", 58);
-
-	m_scoreText = std::make_unique<hop::Text>(m_font);
+	m_scoreText = std::make_unique<hop::Text>(hop::g_resources.Get<hop::Font>("Arcade.ttf", 58));
 	m_scoreText->Create(hop::g_renderer, "SCORE 0000", hop::Color(1, 1, 1, 1));
-	m_lifeText = std::make_unique<hop::Text>(m_font);
+	m_lifeText = std::make_unique<hop::Text>(hop::g_resources.Get<hop::Font>("Arcade.ttf", 58));
 	m_lifeText->Create(hop::g_renderer, "Lives: 0", hop::Color(1, 1, 1, 1));
-	m_startText = std::make_unique<hop::Text>(m_font);
+	m_startText = std::make_unique<hop::Text>(hop::g_resources.Get<hop::Font>("Arcade.ttf", 58));
 	m_startText->Create(hop::g_renderer, "Press Space to Start", hop::Color(1, 1, 1, 1));
 	hop::g_audioSystem.AddAudio("explode", "explode.wav");
 	hop::g_audioSystem.AddAudio("song", "song.wav");
@@ -63,29 +62,43 @@ void FunGame::update(float dt)
 		m_scene->RemoveAll();
 
 		if (hop::random(2) == 0) {
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(0, 0, hop::Transform{ {hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, 0, 4}, hop::g_modelManager.Get("powerUp.txt"));
+			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(0, 0, hop::Transform{ {hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, 0, 4});
 			enemy->m_tag = "PowerUp";
 			enemy->m_game = this;
+			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
+			component->m_texture = hop::g_resources.Get<hop::Texture>("power-UP.png", hop::g_renderer);
+			enemy->AddComponent(std::move(component));
 			m_scene->Add(std::move(enemy));
 		}
 
 		difcur = (int)std::fabs((30* std::sin(10*(m_level-1))));
 		for (int i = 0; i < difcur; i++) {
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(200, 0, enemy->randomWallPos(4), hop::g_modelManager.Get("bullet.txt"));
+			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(200, 0, enemy->randomWallPos(4));
 			enemy->m_tag = "Enemy";
 			enemy->m_game = this;
+			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
+			component->m_texture = hop::g_resources.Get<hop::Texture>("enemy.png", hop::g_renderer);
+			enemy->AddComponent(std::move(component));
 			m_scene->Add(std::move(enemy));
 		}		
 		difcur = (int)std::fabs(30* (1- fabs(std::sin(5*(m_level-1)))));
 		for (int i = 0; i < difcur; i++) {
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(300, 0, enemy->randomWallPos(2), hop::g_modelManager.Get("bullet.txt"));
+			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(300, 0, enemy->randomWallPos(2));
 			enemy->m_tag = "Enemy";
 			enemy->m_game = this;
+			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
+			component->m_texture = hop::g_resources.Get<hop::Texture>("enemy.png", hop::g_renderer);
+			enemy->AddComponent(std::move(component));
 			m_scene->Add(std::move(enemy));
 		}
-		std::unique_ptr<Player> player = std::make_unique<Player>(200.0f, 0, hop::Transform{ {540, 270}, 0, 6 }, hop::g_modelManager.Get("player.txt"));
+		//create player
+		std::unique_ptr<Player> player = std::make_unique<Player>(200.0f, 0, hop::Transform{ {540, 270}, 0, 6 });
 		player->m_tag = "player";
 		player->m_game = this;
+		//create components
+		std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
+		component->m_texture = hop::g_resources.Get<hop::Texture>("player.png", hop::g_renderer);
+		player->AddComponent(std::move(component));
 		m_scene->Add(std::move(player));
 		//expand and aadd player->m_game = this;
 	}

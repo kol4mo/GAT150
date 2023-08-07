@@ -9,7 +9,16 @@ namespace hop {
         if (m_texture) SDL_DestroyTexture(m_texture);
     }
 
-    bool hop::Texture::Load(std::string filename, Renderer& renderer)
+    bool Texture::Create(std::string filename, ...)
+    {
+        va_list args;
+
+        va_start(args, filename);
+        Renderer& renderer = va_arg(args, Renderer);
+        va_end(args);
+        return Load(filename, renderer);
+    }
+    bool hop::Texture::Load(const std::string filename, Renderer& renderer)
     {
         SDL_Surface* surface = IMG_Load(filename.c_str());
         if (!surface)
@@ -36,9 +45,5 @@ namespace hop {
         SDL_QueryTexture(m_texture,NULL, NULL, &point.x, &point.y);
         return vec2{ point.x, point.y };
 
-    }
-    bool Texture::Create(std::string filename, ...)
-    {
-        return false;
     }
 }

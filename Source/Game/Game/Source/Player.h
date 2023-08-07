@@ -6,8 +6,8 @@
 class Player : public hop::Actor
 {
 public:
-	Player(float speed, float turnRate, const hop::Transform& transform, std::shared_ptr<hop::Model> model) :
-		Actor{ transform, model },
+	Player(float speed, float turnRate, const hop::Transform& transform) :
+		Actor{ transform},
 		m_speed{ speed },
 		m_turnRate{turnRate}
 	{}

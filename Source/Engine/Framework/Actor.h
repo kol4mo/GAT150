@@ -1,6 +1,7 @@
 #pragma once
 #include "Core/core.h"
 #include "Renderer/Model.h"
+#include "Framework/Component/Component.h"
 #include <memory>
 
 namespace hop
@@ -21,6 +22,8 @@ namespace hop
 		virtual void Update(float dt);
 		virtual void Draw(hop::Renderer& renderer);
 
+		void AddComponent(std::unique_ptr<Component> component);
+
 		float GetRadius() { return (m_model) ? m_model->getRadius() * m_transform.scale : 0; }
 		virtual void OnCollision(Actor* other) {};
 
@@ -37,6 +40,8 @@ namespace hop
 
 		float m_lifespan = -1.0f;
 	protected:
+		std::vector<std::unique_ptr<Component>> m_components;
+
 		bool m_destroyed = false;
 
 		std::shared_ptr<hop::Model> m_model;

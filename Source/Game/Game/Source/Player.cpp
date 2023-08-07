@@ -30,7 +30,7 @@ void Player::Update(float dt)
 	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !hop::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE)) {
 
 		hop::Transform transform{m_transform.position, m_transform.rotation, 1};
-		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>( 400.0f, m_transform, m_model );
+		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>( 400.0f, m_transform);
 		m_scene->Add(std::move(weapon));
 
 	}
