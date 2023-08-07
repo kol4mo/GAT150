@@ -1,11 +1,12 @@
 #pragma once
 #include "Core/core.h"
 #include "Renderer.h"
+#include "Framework/Resource/Resource.h"
 #include <vector>
 
 namespace hop
 {
-	class Model
+	class Model : public Resource
 	{
 	public:
 		Model() = default;
@@ -22,5 +23,8 @@ namespace hop
 		std::vector<vec2> m_points;
 		Color m_color;
 		float m_radius = 0;
+
+		// Inherited via Resource
+		virtual bool Create(std::string filename, ...) override;
 	};
 }

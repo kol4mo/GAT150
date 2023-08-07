@@ -3,6 +3,7 @@
 #include "Weapon.h"
 #include "Framework/Scene.h"
 #include "Framework/Emitter.h"
+#include "Framework/Component/PhysicsComponent.h"
 #include "FunGame.h"
 #include <cmath>
 
@@ -11,17 +12,18 @@ void Player::Update(float dt)
 
 	Actor::Update(dt);
 	hop::vec2 forward = hop::vec2{ 0,0 };
-	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) forward += {-1, 0};
-	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_D)) forward += {1, 0};
-	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_W)) forward += {0,-1};
-	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_S)) forward += {0, 1};
+	float thrust = 0;
+	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) forward += {-1, 0}; thrust = 1;
+	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_D)) forward += {1, 0}; thrust = 1;
+	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_W)) forward += {0,-1}; thrust = 1;
+	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_S)) forward += {0, 1}; thrust = 1;
 
 	//if ((std::fabs(forward.x) + std::fabs(forward.y)) == 2) {
 		//forward * 0.707;
 	//}
 
-
-	addForce(forward * m_speed);
+	auto physicsComponent = getComponent<hop::PhysicsComponent>();
+	physicsComponent->ApplyForce(forward * m_speed * thrust);
 
 	//m_transform.position += forward * m_speed * hop::g_time.GetDeltaTime();
 	m_transform.position.x = (float)hop::Wrap((int)m_transform.position.x, (int)hop::g_renderer.GetWidth());

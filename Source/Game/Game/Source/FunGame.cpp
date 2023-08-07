@@ -4,6 +4,7 @@
 #include "Framework/Component/SpriteComponent.h"
 #include "Framework/Scene.h"
 #include "Framework/Resource/ResourceManager.h"
+#include "Framework/Component/EnginePhysicsComponent.h"
 #include "Core/core.h"
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
@@ -99,6 +100,9 @@ void FunGame::update(float dt)
 		std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
 		component->m_texture = hop::g_resources.Get<hop::Texture>("player.png", hop::g_renderer);
 		player->AddComponent(std::move(component));
+		auto physicsComponent = std::make_unique<hop::EnginePhysicsComponent>();
+		player->AddComponent(std::move(physicsComponent));
+
 		m_scene->Add(std::move(player));
 		//expand and aadd player->m_game = this;
 	}

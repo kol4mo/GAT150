@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace hop
 {
 	class Component
@@ -10,6 +11,6 @@ namespace hop
 		friend class Actor;
 
 	protected:
-		class Actor* m_owner = nullptr;
+		 class Actor* m_owner = nullptr;
 	};
 }

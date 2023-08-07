@@ -10,10 +10,7 @@ namespace hop
 	{
 	public:
 		Actor() = default;
-		Actor(const hop::Transform& transform, std::shared_ptr<Model> model) :
-			m_transform{ transform },
-			m_model{ model }
-		{}
+
 		Actor(const hop::Transform & transform) :
 			m_transform{ transform }
 		{}
@@ -24,11 +21,11 @@ namespace hop
 
 		void AddComponent(std::unique_ptr<Component> component);
 
-		float GetRadius() { return (m_model) ? m_model->getRadius() * m_transform.scale : 0; }
+		float GetRadius() { return 10.0f; };
 		virtual void OnCollision(Actor* other) {};
 
-		void addForce(const vec2& force) { m_velocity += force; }
-		void SetDamping(float damping) { m_damping = damping; }
+		template<typename T>
+		T* getComponent();
 
 		class Scene* m_scene = nullptr;
 		friend class Scene;
@@ -44,9 +41,15 @@ namespace hop
 
 		bool m_destroyed = false;
 
-		std::shared_ptr<hop::Model> m_model;
-
-		vec2 m_velocity;
-		float m_damping = 0;
 	};
+	template<typename T>
+	inline T* Actor::getComponent()
+	{
+		for (auto& component : m_components) {
+			T* result = dynamic_cast<T*>(component.get());
+			if (result) return result;
+		}
+
+		return nullptr;
+	}
 }
