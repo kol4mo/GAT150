@@ -4,7 +4,7 @@
 #include "Memory.h"
 #include "Time.h"
 
-#include "Vexctor2.h"
-#include "Transform.h"
-#include "MathUtils.h"
-#include "Color.h"
+#include "math/Vexctor2.h"
+#include "math/Transform.h"
+#include "math/MathUtils.h"
+#include "math/Color.h"
