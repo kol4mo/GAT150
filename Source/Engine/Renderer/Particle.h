@@ -1,6 +1,5 @@
 #pragma once
 #include "Core/core.h"
-#include "Renderer/Renderer.h"
 
 namespace hop
 {
@@ -14,6 +13,8 @@ namespace hop
 		float lifetimer = 0;
 		float lifetime = 0;
 	};
+
+	class Renderer;
 
 	class Particle
 	{

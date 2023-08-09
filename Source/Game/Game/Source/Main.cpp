@@ -1,18 +1,12 @@
 #include "Core/core.h"
 #include "Core/logger.h"
 #include "Renderer/Renderer.h"
-#include "Renderer/ModelManager.h"
 #include "Input/InputSystem.h"
 #include "Enemy.h"
 #include "Audio/AudioSystem.h"
 #include "Player.h"	
-#include "Framework/Scene.h"
-#include "Framework/Resource/ResourceManager.h"
-#include "Renderer/Font.h"
-#include "Renderer/Text.h"
-#include "Renderer/Texture.h"
+#include "Framework/Framework.h"
 #include "FunGame.h"
-#include "Renderer/ParticleSystem.h"
 #include <iostream>
 #include <chrono>
 #include <vector>
@@ -47,27 +41,31 @@ public :
 	hop::vec2 m_vel;
 };
 
-void print(int count, ...)
-{
-	va_list args;
-
-
-
-	va_start(args, count);
-	for (int i = 0; i < count; ++i)
-	{
-		std::cout << va_arg(args, const char*) << std::endl;
-	}
-	va_end(args);
-}
+//void zero(int v) {
+//	v = 0;
+//}
+//
+//void zero(int* v) {
+//	*v = 0;
+//}
+//
+//void zero_ref(int& v) {
+//	v = 0;
+//}
+//
 
 int main(int argc, char* argv[])
 {
+	//int i = 5;
+	//zero(i);
+	//cout << i << endl;
+	//zero(&i);
+	//cout << i << endl;
+	//i = 5;
+	//zero_ref(i);
+	//cout << i << endl;
 
-	print(3, "no", "yes", "maybe");
-
-
-	INFO_LOG("hello world");
+	INFO_LOG("Initialize Engine...");
 
 	hop::MemoryTracker::Initialize();
 

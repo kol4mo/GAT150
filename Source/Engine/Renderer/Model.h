@@ -1,11 +1,11 @@
 #pragma once
 #include "Core/core.h"
-#include "Renderer.h"
 #include "Framework/Resource/Resource.h"
 #include <vector>
 
 namespace hop
 {
+	class Renderer;
 	class Model : public Resource
 	{
 	public:

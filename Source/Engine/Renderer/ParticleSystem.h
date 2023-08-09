@@ -1,4 +1,4 @@
-#pragma
+#pragma once
 #include "Particle.h"
 
 namespace hop

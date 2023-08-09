@@ -2,6 +2,13 @@
 #include <string>
 #include <SDL2-2.28.0/include/SDL.h>
 
+#include "Font.h"
+#include "Model.h"
+#include "Particle.h"
+#include "ParticleSystem.h"
+#include "Text.h"
+#include "Texture.h"
+
 namespace hop
 {	
 	class Renderer

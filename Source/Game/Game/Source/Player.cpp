@@ -3,6 +3,7 @@
 #include "Weapon.h"
 #include "Framework/Scene.h"
 #include "Framework/Emitter.h"
+#include "Renderer/Renderer.h"
 #include "Framework/Component/PhysicsComponent.h"
 #include "FunGame.h"
 #include <cmath>

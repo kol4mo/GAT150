@@ -1,4 +1,5 @@
 #include "Particle.h"
+#include "Renderer.h"
 
 namespace hop {
 	void hop::Particle::Update(float dt)

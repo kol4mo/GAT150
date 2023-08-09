@@ -9,8 +9,6 @@
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
-#include "Renderer/Text.h"
-#include "Renderer/ModelManager.h"
 #include "Framework/Emitter.h"
 
 bool FunGame::Initialize()
