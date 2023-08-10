@@ -1,6 +1,6 @@
 #pragma once
 #include <random>
-#include "MathUtils.h"
+#include "math/MathUtils.h"
 
 namespace hop
 {

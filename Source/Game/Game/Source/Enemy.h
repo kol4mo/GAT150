@@ -1,6 +1,6 @@
 #pragma once
 #include "Framework/Actor.h"
-#include "Core/Vexctor2.h"
+#include "Core/math/Vexctor2.h"
 
 
 	class Enemy : public hop::Actor

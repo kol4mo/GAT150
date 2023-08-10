@@ -1,5 +1,6 @@
 #pragma once
 #include "RenderComponent.h"
+#include "Renderer/Model.h"
 
 namespace hop
 {
@@ -9,6 +10,6 @@ namespace hop
 			void Update(float dt) override;
 			void Draw(class Renderer& renderer) override;
 	public:
-		//res_t<Model> m_texture;
+		res_t<Model> m_model;
 	};
 }

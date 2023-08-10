@@ -1,15 +1,11 @@
 #include "FunGame.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Framework/Component/SpriteComponent.h"
-#include "Framework/Scene.h"
-#include "Framework/Resource/ResourceManager.h"
-#include "Framework/Component/EnginePhysicsComponent.h"
+#include "Framework/Framework.h"
 #include "Core/core.h"
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
-#include "Framework/Emitter.h"
 
 bool FunGame::Initialize()
 {
@@ -61,7 +57,7 @@ void FunGame::update(float dt)
 		m_scene->RemoveAll();
 
 		if (hop::random(2) == 0) {
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(0, 0, hop::Transform{ {hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, 0, 4});
+			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(0, 0, hop::Transform{ {hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, 0, 1});
 			enemy->m_tag = "PowerUp";
 			enemy->m_game = this;
 			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
@@ -72,7 +68,7 @@ void FunGame::update(float dt)
 
 		difcur = (int)std::fabs((30* std::sin(10*(m_level-1))));
 		for (int i = 0; i < difcur; i++) {
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(200, 0, enemy->randomWallPos(4));
+			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(200, 0, enemy->randomWallPos(1.5f));
 			enemy->m_tag = "Enemy";
 			enemy->m_game = this;
 			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
@@ -82,7 +78,7 @@ void FunGame::update(float dt)
 		}		
 		difcur = (int)std::fabs(30* (1- fabs(std::sin(5*(m_level-1)))));
 		for (int i = 0; i < difcur; i++) {
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(300, 0, enemy->randomWallPos(2));
+			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(300, 0, enemy->randomWallPos(1));
 			enemy->m_tag = "Enemy";
 			enemy->m_game = this;
 			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
@@ -91,11 +87,11 @@ void FunGame::update(float dt)
 			m_scene->Add(std::move(enemy));
 		}
 		//create player
-		std::unique_ptr<Player> player = std::make_unique<Player>(200.0f, 0, hop::Transform{ {540, 270}, 0, 6 });
+		std::unique_ptr<Player> player = std::make_unique<Player>(200.0f, 0, hop::Transform{ {540, 270}, 0, 1 });
 		player->m_tag = "player";
 		player->m_game = this;
 		//create components
-		std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
+		auto component = std::make_unique<hop::SpriteComponent>();
 		component->m_texture = hop::g_resources.Get<hop::Texture>("player.png", hop::g_renderer);
 		player->AddComponent(std::move(component));
 		auto physicsComponent = std::make_unique<hop::EnginePhysicsComponent>();

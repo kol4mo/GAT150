@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.h"
-#include "Core/Vexctor2.h"
+#include "Core/math/Vexctor2.h"
 
 namespace hop
 {

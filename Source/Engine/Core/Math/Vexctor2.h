@@ -15,6 +15,11 @@ namespace hop
 		Vexctor2(float x, float y) : x{ x }, y{ y } {}
 		Vexctor2(int x, int y) : x{ (float)x }, y{ (float)y } {}
 
+		float operator [] (size_t index) const { return (&x)[index]; }
+		float& operator [] (size_t index) { return (&x)[index]; }
+
+		Vexctor2 operator - () const { return Vexctor2(-x, -y); }
+
 		Vexctor2 operator + (const Vexctor2& v) const { return Vexctor2(x + v.x, y + v.y); }
 		Vexctor2 operator - (const Vexctor2& v) const { return Vexctor2(x - v.x, y - v.y); }
 		Vexctor2 operator / (const Vexctor2& v) const { return Vexctor2(x / v.x, y / v.y); }

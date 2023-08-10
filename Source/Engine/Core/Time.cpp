@@ -1,5 +1,5 @@
 #include "Time.h"
-#include "MathUtils.h"
+#include "math/MathUtils.h"
 
 namespace hop
 {

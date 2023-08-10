@@ -34,6 +34,7 @@ namespace hop
 		int GetHeight() const { return m_height; }
 
 		void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
+		void DrawTexture(class Texture* texture, const Transform& transform);
 
 
 		SDL_Renderer* m_renderer = nullptr;

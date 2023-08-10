@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL2-2.28.0/include/SDL.h>
 #include <vector>
-#include "Core/Vexctor2.h"
+#include "Core/Math/Vexctor2.h"
 #include <array>
 
 namespace hop

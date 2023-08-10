@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Weapon.h"
 #include "FunGame.h"
-#include "Core/MathUtils.h"
+#include "Core/math/MathUtils.h"
 
 	void Enemy::Update(float dt)
 	{

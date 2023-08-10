@@ -1,5 +1,5 @@
 #pragma once
-#include "Core/Vexctor2.h"
+#include "Core/math/Vexctor2.h"
 #include "Framework/Resource/Resource.h"
 
 struct SDL_Texture;
