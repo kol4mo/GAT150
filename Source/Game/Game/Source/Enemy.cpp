@@ -1,12 +1,30 @@
 #include "Enemy.h"
 #include "Renderer/Renderer.h"
-#include  "Framework/Scene.h"
+#include  "Framework/framework.h"
 #include "Player.h"
 #include "Weapon.h"
 #include "FunGame.h"
 #include "Core/math/MathUtils.h"
 
-	void Enemy::Update(float dt)
+bool Enemy::Initialize()
+{
+	Actor::Initialize();
+
+	auto collisionComponent = getComponent<hop::CollisionComponent>();
+	if (collisionComponent) {
+		auto renderComponent = getComponent<hop::RenderComponent>();
+
+		if (renderComponent) {
+
+			float scale = m_transform.scale;
+			collisionComponent->m_radius = renderComponent->GetRadius() * scale * 0.9f;
+		}
+	}
+
+	return true;
+}
+
+void Enemy::Update(float dt)
 	{
 		Actor::Update(dt);
 		/*

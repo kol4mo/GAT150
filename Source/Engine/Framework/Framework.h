@@ -1,4 +1,6 @@
 #pragma once
+
+#include "Object.h"
 #include "Actor.h"
 #include "Emitter.h"
 #include "Game.h"
@@ -10,6 +12,8 @@
 #include "Component/ModelRenderComponent.h"
 #include "Component/PhysicsComponent.h"
 #include "Component/EnginePhysicsComponent.h"
+#include "Component/CollisionComponent.h"
+#include "Component/CircleCollisionComponent.h"
 
 #include "Resource/Resource.h"
 #include "Resource/ResourceManager.h"

@@ -49,6 +49,15 @@
     <ClInclude Include="Framework.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\CollisionComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\CircleCollisionComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp">
@@ -73,6 +82,9 @@
       <Filter>Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="Component\ModelRenderComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\CircleCollisionComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
   </ItemGroup>

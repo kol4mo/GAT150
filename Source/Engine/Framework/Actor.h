@@ -3,10 +3,11 @@
 #include "Renderer/Model.h"
 #include "Framework/Component/Component.h"
 #include <memory>
+#include "Object.h"
 
 namespace hop
 {
-	class Actor
+	class Actor : public Object
 	{
 	public:
 		Actor() = default;
@@ -15,6 +16,8 @@ namespace hop
 			m_transform{ transform }
 		{}
 
+		virtual bool Initialize() override;
+		virtual void OnDestroy() override;
 
 		virtual void Update(float dt);
 		virtual void Draw(hop::Renderer& renderer);

@@ -14,6 +14,9 @@
 			m_fireTime = 2.0f;
 			m_fireTimer = m_fireTime;
 		}
+
+		bool Initialize() override;
+
 		void Update(float dt) override;
 		void OnCollision(Actor* actor) override;
 

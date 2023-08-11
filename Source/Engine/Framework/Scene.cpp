@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "Framework/Component/CollisionComponent.h"
 
 namespace hop
 {
@@ -15,11 +16,13 @@ namespace hop
 
 		for (auto iter1 = m_actors.begin(); iter1 != m_actors.end(); iter1++) {
 			for (auto iter2 = std::next(iter1, 1); iter2 != m_actors.end(); iter2++) {
-				float distance = (*iter1)->m_transform.position.Distance((*iter2)->m_transform.position);
-				float radius = (*iter1)->GetRadius() + (*iter2)->GetRadius();
+				CollisionComponent* collision1 = (*iter1)->getComponent<CollisionComponent>();
+				CollisionComponent* collision2 = (*iter2)->getComponent<CollisionComponent>();
 
-				if (distance <= radius)
-				{
+				if (collision1 == nullptr || collision2 == nullptr) continue;
+
+				if (collision1->CheckCollision(collision2)) {
+
 					(*iter1)->OnCollision(iter2->get());
 					(*iter2)->OnCollision(iter1->get());
 				}

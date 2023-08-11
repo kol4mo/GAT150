@@ -1,12 +1,31 @@
 #include "Player.h"
 #include "Input/InputSystem.h"
 #include "Weapon.h"
-#include "Framework/Scene.h"
-#include "Framework/Emitter.h"
+#include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
-#include "Framework/Component/PhysicsComponent.h"
 #include "FunGame.h"
 #include <cmath>
+
+bool Player::Initialize()
+{
+	Actor::Initialize();
+
+	//cache off
+	m_physicsComponent = getComponent<hop::PhysicsComponent>();
+	auto collisionComponent = getComponent<hop::CollisionComponent>();
+	if (collisionComponent) {
+		auto renderComponent = getComponent<hop::RenderComponent>();
+
+		if (renderComponent) {
+
+			float scale = m_transform.scale;
+			collisionComponent->m_radius = renderComponent->GetRadius() * scale;
+		}
+	}
+
+
+	return true;
+}
 
 void Player::Update(float dt)
 {
@@ -23,7 +42,7 @@ void Player::Update(float dt)
 		//forward * 0.707;
 	//}
 
-	auto physicsComponent = getComponent<hop::PhysicsComponent>();
+	auto physicsComponent = m_physicsComponent;
 	physicsComponent->ApplyForce(forward * m_speed * thrust);
 
 	//m_transform.position += forward * m_speed * hop::g_time.GetDeltaTime();
