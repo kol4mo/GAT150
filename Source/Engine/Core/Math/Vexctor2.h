@@ -53,7 +53,11 @@ namespace hop
 		static float Dot(const Vexctor2& v1, const Vexctor2& v2);
 	};
 
-
+	inline std::ostream& operator<<(std::ostream& stream, const Vexctor2& v)
+	{
+		stream << v.x << " " << v.y;
+		return stream;
+	}
 
 	inline Vexctor2 Vexctor2::Rotate(float radians) const
 	{
