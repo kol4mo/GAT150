@@ -10,11 +10,11 @@
 bool FunGame::Initialize()
 {
 
-	m_scoreText = std::make_unique<hop::Text>(hop::g_resources.Get<hop::Font>("Arcade.ttf", 58));
+	m_scoreText = std::make_unique<hop::Text>(GET_RESOURCE(hop::Font, "Arcade.ttf", 58));
 	m_scoreText->Create(hop::g_renderer, "SCORE 0000", hop::Color(1, 1, 1, 1));
-	m_lifeText = std::make_unique<hop::Text>(hop::g_resources.Get<hop::Font>("Arcade.ttf", 58));
+	m_lifeText = std::make_unique<hop::Text>(GET_RESOURCE(hop::Font, "Arcade.ttf", 58));
 	m_lifeText->Create(hop::g_renderer, "Lives: 0", hop::Color(1, 1, 1, 1));
-	m_startText = std::make_unique<hop::Text>(hop::g_resources.Get<hop::Font>("Arcade.ttf", 58));
+	m_startText = std::make_unique<hop::Text>(GET_RESOURCE(hop::Font, "Arcade.ttf", 58));
 	m_startText->Create(hop::g_renderer, "Press Space to Start", hop::Color(1, 1, 1, 1));
 	hop::g_audioSystem.AddAudio("explode", "explode.wav");
 	hop::g_audioSystem.AddAudio("song", "song.wav");
@@ -61,7 +61,7 @@ void FunGame::update(float dt)
 			enemy->m_tag = "PowerUp";
 			enemy->m_game = this;
 			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
-			component->m_texture = hop::g_resources.Get<hop::Texture>("power-UP.png", hop::g_renderer);
+			component->m_texture = GET_RESOURCE(hop::Texture, "power-UP.png", hop::g_renderer);
 			enemy->AddComponent(std::move(component));
 			auto CollisionComponent = std::make_unique<hop::CircleCollisionComponent>();
 			CollisionComponent->m_radius = 10.0f;
@@ -76,7 +76,7 @@ void FunGame::update(float dt)
 			enemy->m_tag = "Enemy";
 			enemy->m_game = this;
 			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
-			component->m_texture = hop::g_resources.Get<hop::Texture>("enemy.png", hop::g_renderer);
+			component->m_texture = GET_RESOURCE(hop::Texture, "enemy.png", hop::g_renderer);
 			enemy->AddComponent(std::move(component));
 			auto CollisionComponent = std::make_unique<hop::CircleCollisionComponent>();
 			CollisionComponent->m_radius = 10.0f;
@@ -90,7 +90,7 @@ void FunGame::update(float dt)
 			enemy->m_tag = "Enemy";
 			enemy->m_game = this;
 			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
-			component->m_texture = hop::g_resources.Get<hop::Texture>("enemy.png", hop::g_renderer);
+			component->m_texture = GET_RESOURCE(hop::Texture, "enemy.png", hop::g_renderer);
 			enemy->AddComponent(std::move(component));
 			auto CollisionComponent = std::make_unique<hop::CircleCollisionComponent>();
 			CollisionComponent->m_radius = 10.0f;
@@ -103,8 +103,8 @@ void FunGame::update(float dt)
 		player->m_tag = "player";
 		player->m_game = this;
 		//create components
-		auto component = std::make_unique<hop::SpriteComponent>();
-		component->m_texture = hop::g_resources.Get<hop::Texture>("player.png", hop::g_renderer);
+		auto component = hop::Factory::instance().Create<hop::SpriteComponent>("spriteComponent");//std::make_unique<hop::SpriteComponent>();
+		component->m_texture = GET_RESOURCE(hop::Texture, "player.png", hop::g_renderer);
 		player->AddComponent(std::move(component));
 		auto physicsComponent = std::make_unique<hop::EnginePhysicsComponent>();
 		player->AddComponent(std::move(physicsComponent));

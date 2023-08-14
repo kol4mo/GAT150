@@ -1,12 +1,15 @@
 #pragma once
 #include "Resource.h"
+#include "Framework/Singleton.h"
 #include <map>
 #include <memory>#
 #include <string>
 
+#define GET_RESOURCE(type, filename, ...) hop::ResourceManager::instance().Get<type>(filename, __VA_ARGS__)
+
 namespace hop
 {
-	class ResourceManager
+	class ResourceManager : public Singleton<ResourceManager>
 	{
 	public:
 		template<typename T, typename ...TArgs>
@@ -30,5 +33,4 @@ namespace hop
 		return resource;
 	}
 
-	extern ResourceManager g_resources;
 }

@@ -6,6 +6,8 @@
 #include "Game.h"
 #include "scene.h"
 
+#include "Factory.h"
+
 #include "Component/Component.h"
 #include "Component/SpriteComponent.h"
 #include "Component/RenderComponent.h"

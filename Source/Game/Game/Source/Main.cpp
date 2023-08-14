@@ -56,6 +56,8 @@ public :
 
 int main(int argc, char* argv[])
 {
+
+
 	//int i = 5;
 	//zero(i);
 	//cout << i << endl;
@@ -64,6 +66,8 @@ int main(int argc, char* argv[])
 	//i = 5;
 	//zero_ref(i);
 	//cout << i << endl;
+
+	hop::Factory::instance().Register<hop::SpriteComponent>("spriteComponent");
 
 	INFO_LOG("Initialize Engine...");
 
@@ -102,7 +106,7 @@ int main(int argc, char* argv[])
 	unique_ptr<FunGame> game = make_unique<FunGame>();
 	game->Initialize();
 
-	hop::res_t<hop::Texture> texture = hop::g_resources.Get<hop::Texture>("Sans_undertale.jpg", hop::g_renderer);
+	hop::res_t<hop::Texture> texture = GET_RESOURCE(hop::Texture, "Sans_undertale.jpg", hop::g_renderer);
 
 
 

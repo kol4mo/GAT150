@@ -144,12 +144,14 @@
     <ClInclude Include="Component\RenderComponent.h" />
     <ClInclude Include="Component\SpriteComponent.h" />
     <ClInclude Include="Emitter.h" />
+    <ClInclude Include="Factory.h" />
     <ClInclude Include="Framework.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Resource\Resource.h" />
     <ClInclude Include="Resource\ResourceManager.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
@@ -159,7 +161,6 @@
     <ClCompile Include="component\ModelRenderComponent.h" />
     <ClCompile Include="Component\SpriteComponent.cpp" />
     <ClCompile Include="Emitter.cpp" />
-    <ClCompile Include="Resource\ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
