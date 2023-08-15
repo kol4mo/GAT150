@@ -3,6 +3,9 @@
 #include "Framework/Actor.h"
 
 namespace hop {
+
+	CLASS_DEFINITION(SpriteComponent)
+
 	void SpriteComponent::Update(float dt)
 	{
 	}

@@ -103,13 +103,13 @@ void FunGame::update(float dt)
 		player->m_tag = "player";
 		player->m_game = this;
 		//create components
-		auto component = hop::Factory::instance().Create<hop::SpriteComponent>("spriteComponent");//std::make_unique<hop::SpriteComponent>();
+		auto component = CREATE_CLASS(SpriteComponent)
 		component->m_texture = GET_RESOURCE(hop::Texture, "player.png", hop::g_renderer);
 		player->AddComponent(std::move(component));
-		auto physicsComponent = std::make_unique<hop::EnginePhysicsComponent>();
+		auto physicsComponent = CREATE_CLASS(EnginePhysicsComponent)
 		player->AddComponent(std::move(physicsComponent));
 
-		auto CollisionComponent = std::make_unique<hop::CircleCollisionComponent>();
+		auto CollisionComponent = CREATE_CLASS(CircleCollisionComponent)
 		CollisionComponent->m_radius = 10.0f;
 		player->AddComponent(std::move(CollisionComponent));
 

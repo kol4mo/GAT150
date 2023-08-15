@@ -2,6 +2,8 @@
 #include "Framework/Actor.h"
 
 namespace hop {
+	CLASS_DEFINITION(ModelRenderComponent)
+
 	void hop::ModelRenderComponent::Update(float dt)
 	{
 

@@ -7,6 +7,8 @@ namespace hop
 	class ModelRenderComponent : public RenderComponent
 	{
 	public:
+
+		ClASS_DECLERATION(ModelRenderComponent)
 			void Update(float dt) override;
 			void Draw(class Renderer& renderer) override;
 			float GetRadius() override { return m_model->getRadius(); }

@@ -10,6 +10,8 @@ namespace hop
 	class Actor : public Object
 	{
 	public:
+		ClASS_DECLERATION(Actor)
+
 		Actor() = default;
 
 		Actor(const hop::Transform & transform) :

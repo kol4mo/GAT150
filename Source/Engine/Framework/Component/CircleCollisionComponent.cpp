@@ -2,6 +2,8 @@
 #include "Framework/Actor.h"
 
 namespace hop {
+
+    CLASS_DEFINITION(CircleCollisionComponent)
     void hop::CircleCollisionComponent::Update(float dt)
     {
     }

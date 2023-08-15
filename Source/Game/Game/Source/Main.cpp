@@ -67,7 +67,6 @@ int main(int argc, char* argv[])
 	//zero_ref(i);
 	//cout << i << endl;
 
-	hop::Factory::instance().Register<hop::SpriteComponent>("spriteComponent");
 
 	INFO_LOG("Initialize Engine...");
 

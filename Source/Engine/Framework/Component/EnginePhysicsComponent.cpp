@@ -3,6 +3,8 @@
 #include "Framework/Actor.h"
 
 namespace hop {
+
+	EnginePhysicsComponent::Register register_class;
 	void hop::EnginePhysicsComponent::Update(float dt)
 	{
 		m_owner->m_transform.position += m_velocity * dt;

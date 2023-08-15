@@ -3,6 +3,9 @@
 #include <string>
 #include "Math/Vexctor2.h"
 
+#define READ_DATA(value, data) hop::Json::Read(value, #data, data);
+#define READ_DATA_REQUIRED(value, data) hop::Json::Read(value, #data, data, true);
+
 namespace hop {
 	class Json {
 	public:

@@ -3,6 +3,9 @@
 #include <map>
 #include <string>
 #include "Singleton.h"
+#include "Core/logger.h"
+
+#define CREATE_CLASS(classname) hop::Factory::instance().Create<hop::classname>(#classname);
 
 namespace hop {
 
@@ -32,6 +35,11 @@ namespace hop {
 		template<typename T>
 		std::unique_ptr<T> Create(const std::string& key);
 
+		friend class Singleton;
+
+	protected:
+		Factory() = default;
+
 	private:
 		std::map<std::string, std::unique_ptr<CreatorBase>> m_registry;
 	};
@@ -39,6 +47,8 @@ namespace hop {
 	template<typename T>
 	inline void hop::Factory::Register(const std::string& key)
 	{
+		//INFO_LOG("Class Registered: " << key);
+
 		m_registry[key] = std::make_unique<Creator<T>>();
 	}
 
