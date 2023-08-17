@@ -10,6 +10,7 @@ namespace hop
 	public:
 		ClASS_DECLERATION(SpriteComponent)
 
+		bool Initialize() override;
 		void Update(float dt) override;
 		void Draw(class Renderer& renderer) override;
 		
@@ -18,6 +19,7 @@ namespace hop
 
 
 	public:
+		std::string textureName;
 		res_t<Texture> m_texture;
 	};
 }

@@ -2,12 +2,14 @@
 #include <string>
 #include <fstream>
 #include <cassert>
+#include <iostream>
+#include "Framework/Singleton.h"
 
 #ifdef _DEBUG
-#define INFO_LOG(message) { if (hop::g_logger.log(hop::LogLevel::Info, __FILE__, __LINE__)) {hop::g_logger << message << "\n";} }
-#define WARNING_LOG(message) { if (hop::g_logger.log(hop::LogLevel::Warning, __FILE__, __LINE__)) {hop::g_logger << message << "\n";} }
-#define ERROR_LOG(message) { if (hop::g_logger.log(hop::LogLevel::Error, __FILE__, __LINE__)) {hop::g_logger << message << "\n";} }
-#define ASSERT_LOG(condition, message) { if (hop::g_logger.log(hop::LogLevel::Assert, __FILE__, __LINE__)) {hop::g_logger << message << "\n";} assert(condition);}
+#define INFO_LOG(message) { if (hop::Logger::instance().log(hop::LogLevel::Info, __FILE__, __LINE__)) {hop::Logger::instance() << message << "\n";} }
+#define WARNING_LOG(message) { if (hop::Logger::instance().log(hop::LogLevel::Warning, __FILE__, __LINE__)) {hop::Logger::instance() << message << "\n";} }
+#define ERROR_LOG(message) { if (hop::Logger::instance().log(hop::LogLevel::Error, __FILE__, __LINE__)) {hop::Logger::instance() << message << "\n";} }
+#define ASSERT_LOG(condition, message) { if (hop::Logger::instance().log(hop::LogLevel::Assert, __FILE__, __LINE__)) {hop::Logger::instance() << message << "\n";} assert(condition);}
 #else 
 #define INFO_LOG(message) {}
 #define WARNING_LOG(message) {}
@@ -24,10 +26,10 @@ namespace hop {
 		Assert
 	};
 
-	class Logger
+	class Logger : public Singleton<Logger>
 	{
 	public:
-		Logger(LogLevel logLevel, std::ostream* ostream, const std::string& filename = "") : m_logLevel{logLevel}, m_ostream{ostream}
+		Logger(LogLevel logLevel = LogLevel::Info, std::ostream* ostream = &std::cout, const std::string& filename = "log.txt") : m_logLevel{logLevel}, m_ostream{ostream}
 		{
 			if (!filename.empty()) m_fstream.open(filename);
 		}
@@ -43,7 +45,6 @@ namespace hop {
 		std::ofstream m_fstream;
 	};
 
-	extern Logger g_logger;
 	template<typename T>
 	inline Logger& Logger::operator<<(T v)
 	{

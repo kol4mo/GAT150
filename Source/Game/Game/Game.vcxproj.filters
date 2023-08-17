@@ -16,9 +16,6 @@
     <ClCompile Include="Source\Enemy.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Weapon.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\FunGame.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -26,7 +23,6 @@
   <ItemGroup>
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\Enemy.h" />
-    <ClInclude Include="Source\Weapon.h" />
     <ClInclude Include="Source\FunGame.h" />
   </ItemGroup>
 </Project>

@@ -3,8 +3,10 @@
 #include <string>
 #include "Math/Vexctor2.h"
 
-#define READ_DATA(value, data) hop::Json::Read(value, #data, data);
-#define READ_DATA_REQUIRED(value, data) hop::Json::Read(value, #data, data, true);
+#define READ_DATA(value, data) hop::Json::Read(value, #data, data)
+#define READ_DATA_REQUIRED(value, data) hop::Json::Read(value, #data, data, true)
+#define HAS_DATA(value, data) value.HasMember(#data)
+#define GET_DATA(value, data) value[#data]
 
 namespace hop {
 	class Json {
@@ -19,4 +21,6 @@ namespace hop {
 	private:
 
 	};
+
+	using json_t = rapidjson::Value;
 }

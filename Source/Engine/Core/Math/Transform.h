@@ -1,7 +1,8 @@
 #pragma once
-#include "core.h"
+#include "core/core.h"
 #include "Matrix22.h"
 #include "Matrix33.h"
+#include"core/Json.h"
 
 namespace hop
 {
@@ -25,5 +26,8 @@ namespace hop
 			mat3 mt = mat3::CreateTranslation(position);
 			return mt * ms * mr;
 		}
+
+		void Read(const json_t& value);
+
 	};
 }

@@ -6,6 +6,7 @@
 #include "Core/logger.h"
 
 #define CREATE_CLASS(classname) hop::Factory::instance().Create<hop::classname>(#classname);
+#define CREATE_CLASS_BASE(classbase, classname) hop::Factory::instance().Create<hop::classbase>(classname);
 
 namespace hop {
 
@@ -47,7 +48,7 @@ namespace hop {
 	template<typename T>
 	inline void hop::Factory::Register(const std::string& key)
 	{
-		//INFO_LOG("Class Registered: " << key);
+		INFO_LOG("Class Registered: " << key);
 
 		m_registry[key] = std::make_unique<Creator<T>>();
 	}

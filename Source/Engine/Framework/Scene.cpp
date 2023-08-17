@@ -11,7 +11,7 @@ namespace hop
 
 		auto iter = m_actors.begin();
 		while (iter != m_actors.end())
-			iter = ((*iter)->m_destroyed) ? m_actors.erase(iter) : ++iter;
+			iter = ((*iter)->destroyed) ? m_actors.erase(iter) : ++iter;
 
 
 		for (auto iter1 = m_actors.begin(); iter1 != m_actors.end(); iter1++) {
@@ -51,7 +51,7 @@ namespace hop
 	{
 		for (auto& actor : m_actors) {
 			Actor* result = dynamic_cast<Actor*> (actor.get());
-			if (result && actor->m_tag == tag) return result;
+			if (result && actor->tag == tag) return result;
 		}
 		return nullptr;
 	}

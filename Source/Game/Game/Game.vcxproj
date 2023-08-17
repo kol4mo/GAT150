@@ -175,7 +175,6 @@
     <ClCompile Include="Source\FunGame.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Player.cpp" />
-    <ClCompile Include="Source\Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Engine\Audio\Audio.vcxproj">
@@ -198,7 +197,6 @@
     <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\FunGame.h" />
     <ClInclude Include="Source\Player.h" />
-    <ClInclude Include="Source\Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

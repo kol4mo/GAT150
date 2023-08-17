@@ -3,7 +3,6 @@
 #include "FileIO.h"
 
 namespace hop {
-	Logger g_logger(LogLevel::Info, &std::cout, "log.txt");
 
 	bool Logger::log(LogLevel logLevel, const std::string& filename, int line)
 	{

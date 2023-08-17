@@ -16,7 +16,7 @@ bool Enemy::Initialize()
 
 		if (renderComponent) {
 
-			float scale = m_transform.scale;
+			float scale = transform.scale;
 			collisionComponent->m_radius = renderComponent->GetRadius() * scale * 0.9f;
 		}
 	}
@@ -37,11 +37,11 @@ void Enemy::Update(float dt)
 
 
 
-		hop::vec2 forward = hop::vec2{ 0, -1 }.Rotate(m_transform.rotation);
-		m_transform.position += forward * m_speed * hop::g_time.GetDeltaTime();
+		hop::vec2 forward = hop::vec2{ 0, -1 }.Rotate(transform.rotation);
+		transform.position += forward * m_speed * hop::g_time.GetDeltaTime();
 		//m_transform.position.x = hop::Wrap(m_transform.position.x, (float)hop::g_renderer.GetWidth());
-		if (m_transform.position.y > hop::g_renderer.GetHeight() || m_transform.position.y < 0 || m_transform.position.x > hop::g_renderer.GetWidth() || m_transform.position.x < 0) {
-			m_destroyed = true;
+		if (transform.position.y > hop::g_renderer.GetHeight() || transform.position.y < 0 || transform.position.x > hop::g_renderer.GetWidth() || transform.position.x < 0) {
+			destroyed = true;
 		}
 		/*
 		if (m_fireTimer <= 0) {
@@ -59,8 +59,8 @@ void Enemy::Update(float dt)
 
 	void Enemy::OnCollision(Actor* actor)
 	{
-		if (actor->m_tag == "player") {
-			m_destroyed = true;
+		if (actor->tag == "player") {
+			destroyed = true;
 		}
 	}
 

@@ -1,1 +1,6 @@
+Factory.h(50) Class Registered: SpriteComponent
+Factory.h(50) Class Registered: ModelRenderComponent
+Factory.h(50) Class Registered: EnginePhysicsComponent
+Factory.h(50) Class Registered: CircleCollisionComponent
+Factory.h(50) Class Registered: Actor
 Main.cpp(71) Initialize Engine...

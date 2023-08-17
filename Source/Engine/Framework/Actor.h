@@ -15,7 +15,7 @@ namespace hop
 		Actor() = default;
 
 		Actor(const hop::Transform & transform) :
-			m_transform{ transform }
+			transform{ transform }
 		{}
 
 		virtual bool Initialize() override;
@@ -37,20 +37,21 @@ namespace hop
 
 		class Game* m_game = nullptr;
 
-		hop::Transform m_transform;
-		std::string m_tag;
+		hop::Transform transform;
+		std::string tag;
 
-		float m_lifespan = -1.0f;
+		float lifespan = -1.0f;
+
 	protected:
-		std::vector<std::unique_ptr<Component>> m_components;
+		std::vector<std::unique_ptr<Component>> components;
 
-		bool m_destroyed = false;
+		bool destroyed = false;
 
 	};
 	template<typename T>
 	inline T* Actor::getComponent()
 	{
-		for (auto& component : m_components) {
+		for (auto& component : components) {
 			T* result = dynamic_cast<T*>(component.get());
 			if (result) return result;
 		}

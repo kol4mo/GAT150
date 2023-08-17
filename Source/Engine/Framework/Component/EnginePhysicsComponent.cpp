@@ -7,7 +7,7 @@ namespace hop {
 	EnginePhysicsComponent::Register register_class;
 	void hop::EnginePhysicsComponent::Update(float dt)
 	{
-		m_owner->m_transform.position += m_velocity * dt;
+		m_owner->transform.position += m_velocity * dt;
 		m_velocity = std::pow(1 - m_damping, dt);
 	}
 

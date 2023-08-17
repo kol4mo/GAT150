@@ -18,7 +18,7 @@ bool Player::Initialize()
 
 		if (renderComponent) {
 
-			float scale = m_transform.scale;
+			float scale = transform.scale;
 			collisionComponent->m_radius = renderComponent->GetRadius() * scale;
 		}
 	}
@@ -46,23 +46,17 @@ void Player::Update(float dt)
 	physicsComponent->ApplyForce(forward * m_speed * thrust);
 
 	//m_transform.position += forward * m_speed * hop::g_time.GetDeltaTime();
-	m_transform.position.x = (float)hop::Wrap((int)m_transform.position.x, (int)hop::g_renderer.GetWidth());
-	m_transform.position.y = (float)hop::Wrap((int)m_transform.position.y, (int)hop::g_renderer.GetHeight());
+	transform.position.x = (float)hop::Wrap((int)transform.position.x, (int)hop::g_renderer.GetWidth());
+	transform.position.y = (float)hop::Wrap((int)transform.position.y, (int)hop::g_renderer.GetHeight());
 
-	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !hop::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE)) {
 
-		hop::Transform transform{m_transform.position, m_transform.rotation, 1};
-		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>( 400.0f, m_transform);
-		m_scene->Add(std::move(weapon));
-
-	}
 	if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_T)) hop::g_time.SetTimeScale(0.25f);
 	else hop::g_time.SetTimeScale(1.0f);
 }
 
 void Player::OnCollision(Actor* actor)
 {
-	if (actor->m_tag == "Enemy" && dynamic_cast<FunGame*>(m_game)->getState() == FunGame::eState::Game) {
+	if (actor->tag == "Enemy" && dynamic_cast<FunGame*>(m_game)->getState() == FunGame::eState::Game) {
 		dynamic_cast<FunGame*>(m_game)->SetState(FunGame::eState::PlayerDeadstart);
 		hop::EmitterData data;
 		data.burst = true;
@@ -76,12 +70,12 @@ void Player::OnCollision(Actor* actor)
 		data.speedMax = 250;
 		data.damping = 0.5f;
 		data.color = hop::Color{ 1, 0, 0, 1 };
-		hop::Transform transform{ { m_transform.position }, 0, 1 };
+		hop::Transform transform{ { transform.position }, 0, 1 };
 		auto emitter = std::make_unique<hop::Emitter>(transform, data);
-		emitter->m_lifespan = 1.0f;
+		emitter->lifespan = 1.0f;
 		m_scene->Add(std::move(emitter));
 	}
-	if (actor->m_tag == "PowerUp") {
+	if (actor->tag == "PowerUp") {
 		dynamic_cast<FunGame*>(m_game)->AddPoints(50);
 	}
 }

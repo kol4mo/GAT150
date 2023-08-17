@@ -7,7 +7,7 @@ namespace hop
 
 	bool Actor::Initialize()
 	{
-		for (auto& component : m_components) {
+		for (auto& component : components) {
 			component->Initialize();
 		}
 
@@ -15,16 +15,16 @@ namespace hop
 	}
 	void Actor::OnDestroy()
 	{
-		for (auto& component : m_components) {
+		for (auto& component : components) {
 			component->OnDestroy();
 		}
 	}
 	void Actor::Update(float dt) {
-		if (m_lifespan != -1.0f) {
-			m_lifespan -= dt;
-				m_destroyed = (m_lifespan <= 0);
+		if (lifespan != -1.0f) {
+			lifespan -= dt;
+				destroyed = (lifespan <= 0);
 		}
-		for (auto& component : m_components) {
+		for (auto& component : components) {
 			component->Update(dt);
 		}
 
@@ -33,7 +33,7 @@ namespace hop
 
 	void Actor::Draw(hop::Renderer& renderer)
 	{
-		for (auto& component : m_components) {
+		for (auto& component : components) {
 			if (dynamic_cast<RenderComponent*>(component.get())) {
 				dynamic_cast<RenderComponent*>(component.get())->Draw(renderer);
 			}
@@ -44,13 +44,27 @@ namespace hop
 	void Actor::AddComponent(std::unique_ptr<Component> component)
 	{
 		component->m_owner = this;
-		m_components.push_back(std::move(component));
+		components.push_back(std::move(component));
 	}
 
-	bool Actor::Read(const rapidjson::Value& value)
+	void Actor::Read(const rapidjson::Value& value)
 	{
+		Object::Read(value);
+		READ_DATA(value, tag);
+		READ_DATA(value, lifespan);
 
+		if (HAS_DATA(value, transform)) transform.Read(value);
 
-		return true;
+		if (HAS_DATA(value, components) && GET_DATA(value, components).IsArray())
+		{
+			for (auto& componentValue : GET_DATA(value, components).GetArray()) {
+				std::string type;
+				READ_DATA(componentValue, type);
+
+				auto component = CREATE_CLASS_BASE(Component, type);
+				component->Read(componentValue);
+				AddComponent(std::move(component));
+			}
+		}
 	}
 }
