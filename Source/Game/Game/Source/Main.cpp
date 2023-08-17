@@ -75,26 +75,6 @@ int main(int argc, char* argv[])
 	hop::seedRandom((unsigned int)time(nullptr));
 	hop::setFilePath("Assets");
 
-	rapidjson::Document document;
-	hop::Json::Load("json.txt", document);
-	int i1;
-	hop::Json::Read(document, "integer1", i1);
-	std::cout << i1 << std::endl;
-	int i2;
-	hop::Json::Read(document, "integer2", i2);
-	std::cout << i2 << std::endl;
-	std::string str;
-	hop::Json::Read(document, "string", str);
-	std::cout << str << std::endl;
-	bool b;
-	hop::Json::Read(document, "boolean", b);
-		std::cout << b << std::endl;
-	float f;
-	hop::Json::Read(document, "float", f);
-		std::cout << f << std::endl;
-	hop::vec2 v2;
-	hop::Json::Read(document, "vector2", v2, true);
-	std::cout << v2 << std::endl;
 
 	hop::g_renderer.Initialize();
 	hop::g_renderer.CreateWindow("CSC196", 1080, 540);
