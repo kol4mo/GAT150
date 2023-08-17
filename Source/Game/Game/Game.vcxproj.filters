@@ -23,6 +23,8 @@
   <ItemGroup>
     <ClInclude Include="Source\Player.h" />
     <ClInclude Include="Source\Enemy.h" />
-    <ClInclude Include="Source\FunGame.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\Build\Assets\Scene.json" />
   </ItemGroup>
 </Project>

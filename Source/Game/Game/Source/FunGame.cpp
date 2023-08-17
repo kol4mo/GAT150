@@ -22,6 +22,8 @@ bool FunGame::Initialize()
 	hop::g_audioSystem.PlayOneShot("song", true);
 
 	m_scene = std::make_unique<hop::Scene>();
+	m_scene->load("Scene.json");
+	m_scene->Initialize();
 
 	//for (int i = 0; i < (x * x); i++) {
 	//	unique_ptr<Enemy> enemy = make_unique<Enemy>(200, 0, hop::Transform{{hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, hop::randomDir(), 3}, hop::g_modelManager.Get("S.txt"));

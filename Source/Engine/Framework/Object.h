@@ -5,7 +5,7 @@
 
 #define ClASS_DECLERATION(classname) \
 	virtual const char* GetClassName() { return #classname; } \
-	void Read(const rapidjson::Value& vlaue); \
+	virtual void Read(const rapidjson::Value& vlaue); \
 	class Register \
 	{ \
 	public: \

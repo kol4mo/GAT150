@@ -7,13 +7,13 @@ namespace hop {
 
 		bool ModelRenderComponent::Initialize()
 	{
-		m_model = GET_RESOURCE(Model, modelName);
+		if(!modelName.empty())m_model = GET_RESOURCE(Model, modelName);
 
 		return true;
 	}
 
 	void hop::ModelRenderComponent::Update(float dt)
-	{
+	{	
 
 	}
 

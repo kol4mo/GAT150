@@ -3,6 +3,12 @@
 
 namespace hop
 {
+	bool Scene::Initialize()
+	{
+		for (auto& actor : m_actors) actor->Initialize();
+
+		return true;
+	}
 	void Scene::Update(float dt)
 	{
 		for (auto& actor : m_actors) { 
@@ -45,6 +51,33 @@ namespace hop
 	void Scene::RemoveAll()
 	{
 		m_actors.clear();
+	}
+
+	bool Scene::load(const std::string& filename)
+	{
+		rapidjson::Document document;
+		if (Json::Load(filename, document)) {
+			ERROR_LOG("Could not load scene file: " << filename);
+			return false;
+		}
+		Read(document);
+
+		return true;
+	}
+
+	void Scene::Read(const json_t& value)
+	{
+		if (HAS_DATA(value, actors) && GET_DATA(value, actors).IsArray())
+		{
+			for (auto& actorValue : GET_DATA(value, actors).GetArray()) {
+				std::string type;
+				READ_DATA(actorValue, type);
+
+				auto actor = CREATE_CLASS_BASE(Actor, type);
+				actor->Read(actorValue);
+				Add(std::move(actor));
+			}
+		}
 	}
 
 	Actor* Scene::GetActor(std::string tag)

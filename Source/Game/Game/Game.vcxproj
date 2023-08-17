@@ -195,8 +195,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Enemy.h" />
-    <ClInclude Include="Source\FunGame.h" />
     <ClInclude Include="Source\Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\Build\Assets\Scene.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

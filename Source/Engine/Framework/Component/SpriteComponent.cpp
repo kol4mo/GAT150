@@ -9,7 +9,7 @@ namespace hop {
 
 	bool SpriteComponent::Initialize()
 	{
-		m_texture = GET_RESOURCE(Texture, textureName, g_renderer);
+		if (!textureName.empty()) m_texture = GET_RESOURCE(Texture, textureName, g_renderer);
 
 		return true;
 	}

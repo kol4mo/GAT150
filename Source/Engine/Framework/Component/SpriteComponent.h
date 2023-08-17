@@ -8,7 +8,16 @@ namespace hop
 	class SpriteComponent : public RenderComponent
 	{
 	public:
-		ClASS_DECLERATION(SpriteComponent)
+		virtual const char* GetClassName() {
+			return "SpriteComponent";
+		} 
+		void Read(const rapidjson::Value& vlaue); 
+		class Register {
+		public: Register() {
+			Factory::instance().Register<SpriteComponent>("SpriteComponent");
+		}
+		};
+		
 
 		bool Initialize() override;
 		void Update(float dt) override;
