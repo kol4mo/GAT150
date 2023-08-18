@@ -4,4 +4,4 @@ Factory.h(51) Class Registered: EnginePhysicsComponent
 Factory.h(51) Class Registered: CircleCollisionComponent
 Factory.h(51) Class Registered: Actor
 Main.cpp(71) Initialize Engine...
-Scene.cpp(60) Could not load scene file: Scene.json
+Scene.cpp(66) Could not load scene file: Scene.json

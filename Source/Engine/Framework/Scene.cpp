@@ -11,14 +11,13 @@ namespace hop
 	}
 	void Scene::Update(float dt)
 	{
-		for (auto& actor : m_actors) { 
-			actor->Update(dt); 
-		}
 
 		auto iter = m_actors.begin();
-		while (iter != m_actors.end())
+		while (iter != m_actors.end()) {
+			if ((*iter)->active) (*iter)->Update(dt);
 			iter = ((*iter)->destroyed) ? m_actors.erase(iter) : ++iter;
 
+		}
 
 		for (auto iter1 = m_actors.begin(); iter1 != m_actors.end(); iter1++) {
 			for (auto iter2 = std::next(iter1, 1); iter2 != m_actors.end(); iter2++) {
@@ -39,7 +38,10 @@ namespace hop
 
 	void Scene::Draw(Renderer& renderer)
 	{
-		for (auto& actor : m_actors) actor->Draw(renderer);
+		for (auto& actor : m_actors) {
+			if (actor->active) actor->Draw(renderer);
+		
+		}
 	}
 
 	void Scene::Add(std::unique_ptr<Actor> actor)
@@ -48,9 +50,13 @@ namespace hop
 		m_actors.push_back(std::move(actor));
 	}
 
-	void Scene::RemoveAll()
+	void Scene::RemoveAll(bool force)
 	{
-		m_actors.clear();
+		auto iter = m_actors.begin();
+		while (iter != m_actors.end())
+		{
+			(force || !(*iter)->persistent) ? iter = m_actors.erase(iter) : iter++;
+		}
 	}
 
 	bool Scene::load(const std::string& filename)
@@ -75,17 +81,17 @@ namespace hop
 
 				auto actor = CREATE_CLASS_BASE(Actor, type);
 				actor->Read(actorValue);
-				Add(std::move(actor));
+
+				if (actor->prototype) {
+					std::string name = actor->name;
+					Factory::instance().RegisterPrototype(name, std::move(actor));
+				}
+				else {
+					Add(std::move(actor));
+				}
 			}
 		}
 	}
 
-	Actor* Scene::GetActor(std::string tag)
-	{
-		for (auto& actor : m_actors) {
-			Actor* result = dynamic_cast<Actor*> (actor.get());
-			if (result && actor->tag == tag) return result;
-		}
-		return nullptr;
-	}
+
 }

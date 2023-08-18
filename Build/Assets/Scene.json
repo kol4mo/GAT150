@@ -1,8 +1,9 @@
 {
 	"actors":[
 		{
-			"type":"Actor",
-			"name":"Background",
+			"type": "Actor",
+			"name": "Background",
+			"persistent": true,
 			"transform": {
 				"position": [ 540, 270 ],
 				"scale": 1.0,
@@ -12,7 +13,7 @@
 				{
 					"type": "SpriteRenderComponent",
 					"textureName": "background.jpg"
-				}	
+				}
 			]
 		}
 	]

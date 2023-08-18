@@ -10,13 +10,20 @@ namespace hop
 	class Actor : public Object
 	{
 	public:
-		ClASS_DECLERATION(Actor)
+		virtual const char* GetClassName() {
+			return "Actor";
+		} virtual void Read(const rapidjson::Value& vlaue); 
+		virtual std::unique_ptr<Object> Clone() {
+			return std::make_unique<Actor>(*this);
+		} \
 
 		Actor() = default;
 
 		Actor(const hop::Transform & transform) :
 			transform{ transform }
 		{}
+
+		Actor(const Actor& other);
 
 		virtual bool Initialize() override;
 		virtual void OnDestroy() override;
@@ -46,6 +53,8 @@ namespace hop
 		std::vector<std::unique_ptr<Component>> components;
 
 		bool destroyed = false;
+		bool persistent = false;
+		bool prototype = false;
 
 	};
 	template<typename T>

@@ -18,10 +18,13 @@ namespace hop
 
 		int getLength() { return (int)m_actors.size(); }
 
-		Actor* GetActor(std::string tag);
+		template<typename T = Actor>
+		T* GetActor(std::string tag);
+		template<typename T = Actor>
+		T* GetActorByName(const std::string& name);
 
 		void Add(std::unique_ptr<Actor> actor);
-		void RemoveAll();
+		void RemoveAll(bool force = false);
 
 		bool load(const std::string& filename);
 
@@ -30,6 +33,24 @@ namespace hop
 	private:
 		std::list<std::unique_ptr<Actor>> m_actors;
 	};
+	template<typename T>
+	inline T* Scene::GetActor(std::string tag)
+	{
+		for (auto& actor : m_actors) {
+			T* result = dynamic_cast<T*> (actor.get());
+			if (result && actor->tag == tag) return result;
+		}
+		return nullptr;
+	}
+	template<typename T>
+	inline T* Scene::GetActorByName(const std::string& name)
+	{
+		for (auto& actor : m_actors) {
+			T* result = dynamic_cast<T*> (actor.get());
+			if (result && actor->name == name) return result;
+		}
+		return nullptr;
+	}
 
 
 }

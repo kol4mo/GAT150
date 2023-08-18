@@ -3,7 +3,18 @@
 
 namespace hop
 {
-	CLASS_DEFINITION(Actor)
+	Actor::Register register_class;
+
+	Actor::Actor(const Actor& other)
+	{
+		name = other.name;
+		tag = other.tag;
+		lifespan = other.lifespan;
+		transform = other.transform;
+		m_scene = other.m_scene;
+		m_game = other.m_game;
+
+	}
 
 	bool Actor::Initialize()
 	{
@@ -52,6 +63,8 @@ namespace hop
 		Object::Read(value);
 		READ_DATA(value, tag);
 		READ_DATA(value, lifespan);
+		READ_DATA(value, persistent);
+		READ_DATA(value, prototype);
 
 		if (HAS_DATA(value, transform)) transform.Read(GET_DATA(value, transform));
 

@@ -2,12 +2,12 @@
 #include "Framework/Actor.h"
 #include "Core/math/Vexctor2.h"
 
-
 	class Enemy : public hop::Actor
 	{
 	public:
+
 		Enemy(float speed, float turnRate, const hop::Transform& transform) :
-			Actor{ transform},
+			Actor{ transform },
 			m_speed{ speed },
 			m_turnRate{ turnRate }
 		{

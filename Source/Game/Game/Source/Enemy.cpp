@@ -5,25 +5,27 @@
 #include "FunGame.h"
 #include "Core/math/MathUtils.h"
 
-bool Enemy::Initialize()
-{
-	Actor::Initialize();
 
-	auto collisionComponent = getComponent<hop::CollisionComponent>();
-	if (collisionComponent) {
-		auto renderComponent = getComponent<hop::RenderComponent>();
 
-		if (renderComponent) {
+		bool Enemy::Initialize()
+	{
+		Actor::Initialize();
 
-			float scale = transform.scale;
-			collisionComponent->m_radius = renderComponent->GetRadius() * scale * 0.9f;
+		auto collisionComponent = getComponent<hop::CollisionComponent>();
+		if (collisionComponent) {
+			auto renderComponent = getComponent<hop::RenderComponent>();
+
+			if (renderComponent) {
+
+				float scale = transform.scale;
+				collisionComponent->m_radius = renderComponent->GetRadius() * scale * 0.9f;
+			}
 		}
+
+		return true;
 	}
 
-	return true;
-}
-
-void Enemy::Update(float dt)
+	void Enemy::Update(float dt)
 	{
 		Actor::Update(dt);
 		/*
@@ -68,32 +70,33 @@ void Enemy::Update(float dt)
 		hop::vec2 temp;
 		float dir;
 		switch (hop::random(2)) {
+		case 0:
+			switch (hop::random(2)) {
 			case 0:
-				switch (hop::random(2)) {
-				case 0:
-					temp = { 0, hop::random(hop::g_renderer.GetHeight()) };
-					dir = hop::halfPi;
-					break;
-				case 1:
-					temp = { hop::g_renderer.GetWidth() , hop::random(hop::g_renderer.GetHeight()) };
-					dir = hop::halfPi + hop::PI;
-					break;
-				}
-			break;
+				temp = { 0, hop::random(hop::g_renderer.GetHeight()) };
+				dir = hop::halfPi;
+				break;
 			case 1:
+				temp = { hop::g_renderer.GetWidth() , hop::random(hop::g_renderer.GetHeight()) };
+				dir = hop::halfPi + hop::PI;
+				break;
+			}
+			break;
+		case 1:
 
-				switch (hop::random(2)) {
-				case 0:
-					temp = { hop::random(hop::g_renderer.GetWidth()), 0 };
-					dir = hop::PI;
-					break;
-				case 1:
-					temp = { hop::random(hop::g_renderer.GetWidth()), hop::g_renderer.GetHeight()};
-					dir = hop::TwoPi;
-					break;
-				}
+			switch (hop::random(2)) {
+			case 0:
+				temp = { hop::random(hop::g_renderer.GetWidth()), 0 };
+				dir = hop::PI;
+				break;
+			case 1:
+				temp = { hop::random(hop::g_renderer.GetWidth()), hop::g_renderer.GetHeight() };
+				dir = hop::TwoPi;
+				break;
+			}
 
 			break;
 		}
 		return { temp, dir, scale };
 	}
+

@@ -46,6 +46,8 @@ void FunGame::update(float dt)
 		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE))
 		{
 			m_state = eState::StartGame;
+			//auto actor = m_scene->GetActorByName<hop::Actor>("Background");
+			//if (actor) actor->active = false;
 		}
 		break;
 	case FunGame::eState::StartGame:
@@ -123,7 +125,7 @@ void FunGame::update(float dt)
 		break;
 	case FunGame::eState::Game: {
 
-		if (m_scene->GetActor("Enemy") == nullptr) {
+		if (m_scene->GetActor<hop::Actor>("Enemy") == nullptr) {
 			m_state = eState::StartLevel;
 			m_level++;
 			AddPoints(14);

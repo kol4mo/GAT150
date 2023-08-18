@@ -69,7 +69,7 @@ void Player::OnCollision(Actor* actor)
 		data.speedMax = 250;
 		data.damping = 0.5f;
 		data.color = hop::Color{ 1, 0, 0, 1 };
-		hop::Transform transform{ { transform.position }, 0, 1 };
+		hop::Transform transform{ { this->transform.position }, 0, 1 };
 		auto emitter = std::make_unique<hop::Emitter>(transform, data);
 		emitter->lifespan = 1.0f;
 		m_scene->Add(std::move(emitter));
