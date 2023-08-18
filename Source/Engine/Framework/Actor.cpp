@@ -14,6 +14,10 @@ namespace hop
 		m_scene = other.m_scene;
 		m_game = other.m_game;
 
+		for (auto& component : other.components) {
+			auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->clone().release()));
+			AddComponent(std::move(clone))
+		}
 	}
 
 	bool Actor::Initialize()
