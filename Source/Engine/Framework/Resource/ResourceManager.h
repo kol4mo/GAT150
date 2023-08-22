@@ -2,7 +2,7 @@
 #include "Resource.h"
 #include "Framework/Singleton.h"
 #include <map>
-#include <memory>#
+#include <memory>
 #include <string>
 
 #define GET_RESOURCE(type, filename, ...) hop::ResourceManager::instance().Get<type>(filename, __VA_ARGS__)

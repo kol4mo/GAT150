@@ -62,7 +62,7 @@ namespace hop
 	bool Scene::load(const std::string& filename)
 	{
 		rapidjson::Document document;
-		if (Json::Load(filename, document)) {
+		if (!Json::Load(filename, document)) {
 			ERROR_LOG("Could not load scene file: " << filename);
 			return false;
 		}
@@ -75,23 +75,25 @@ namespace hop
 	{
 		if (HAS_DATA(value, actors) && GET_DATA(value, actors).IsArray())
 		{
-			for (auto& actorValue : GET_DATA(value, actors).GetArray()) {
+			for (auto& actorValue : GET_DATA(value, actors).GetArray())
+			{
 				std::string type;
 				READ_DATA(actorValue, type);
 
-				auto actor = CREATE_CLASS_BASE(Actor, type);
+				auto actor = hop::Factory::instance().Create<hop::Actor>(type);
 				actor->Read(actorValue);
 
-				if (actor->prototype) {
+				if (actor->prototype)
+				{
 					std::string name = actor->name;
 					Factory::instance().RegisterPrototype(name, std::move(actor));
 				}
-				else {
+				else
+				{
 					Add(std::move(actor));
 				}
 			}
 		}
+
 	}
-
-
 }

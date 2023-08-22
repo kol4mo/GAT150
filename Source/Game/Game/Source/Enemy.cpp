@@ -6,8 +6,10 @@
 #include "Core/math/MathUtils.h"
 
 
+namespace hop {
 
-		bool Enemy::Initialize()
+	CLASS_DEFINITION(Enemy)
+	bool Enemy::Initialize()
 	{
 		Actor::Initialize();
 
@@ -100,3 +102,10 @@
 		return { temp, dir, scale };
 	}
 
+	void Enemy::Read(const json_t& value) {
+		Actor::Read(value);
+
+		READ_DATA(value, m_speed);
+	}
+
+}

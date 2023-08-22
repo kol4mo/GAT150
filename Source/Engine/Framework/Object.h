@@ -6,7 +6,7 @@
 #define ClASS_DECLERATION(classname) \
 	virtual const char* GetClassName() { return #classname; } \
 	virtual void Read(const rapidjson::Value& vlaue); \
-	virtual std::unique_ptr<Object> clone() { return std::make_unique<classname>(*this); } \
+	virtual std::unique_ptr<Object> Clone() { return std::make_unique<classname>(*this); } \
 	class Register { \
 	public: \
 		Register() \

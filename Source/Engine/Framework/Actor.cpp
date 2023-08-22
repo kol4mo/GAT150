@@ -3,7 +3,7 @@
 
 namespace hop
 {
-	Actor::Register register_class;
+	CLASS_DEFINITION(Actor)
 
 	Actor::Actor(const Actor& other)
 	{
@@ -15,8 +15,8 @@ namespace hop
 		m_game = other.m_game;
 
 		for (auto& component : other.components) {
-			auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->clone().release()));
-			AddComponent(std::move(clone))
+			auto clone = std::unique_ptr<Component>(dynamic_cast<Component*>(component->Clone().release()));
+			AddComponent(std::move(clone));
 		}
 	}
 

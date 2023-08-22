@@ -5,9 +5,9 @@
 #include "Singleton.h"
 #include "Core/logger.h"
 
-#define CREATE_CLASS(classname) hop::Factory::instance().Create<hop::classname>(#classname);
-#define CREATE_CLASS_BASE(classbase, classname) hop::Factory::instance().Create<hop::classbase>(classname);
-#define INSTANTIATE(classbase, classname) hop::Factory::instance().Create<hop::classbase>(classname);
+#define CREATE_CLASS(classname) hop::Factory::instance().Create<hop::classname>(#classname)
+#define CREATE_CLASS_BASE(classbase, classname) hop::Factory::instance().Create<hop::classbase>(classname)
+#define INSTANTIATE(classbase, classname) hop::Factory::instance().Create<hop::classbase>(classname)
 
 namespace hop {
 

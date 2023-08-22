@@ -2,9 +2,12 @@
 #include "Framework/Actor.h"
 #include "Core/math/Vexctor2.h"
 
+namespace hop {
 	class Enemy : public hop::Actor
 	{
 	public:
+
+		ClASS_DECLERATION(Enemy)
 
 		Enemy(float speed, float turnRate, const hop::Transform& transform) :
 			Actor{ transform },
@@ -20,11 +23,13 @@
 		void Update(float dt) override;
 		void OnCollision(Actor* actor) override;
 
+		Enemy() = default;
 		hop::Transform randomWallPos(float scale);
-	private:
 		float m_speed = 0;
+	private:
 		float m_turnRate = 0;
 
 		float m_fireTime = 0;
 		float m_fireTimer = 0;
 	};
+}

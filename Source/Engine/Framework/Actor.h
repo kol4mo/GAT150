@@ -10,12 +10,7 @@ namespace hop
 	class Actor : public Object
 	{
 	public:
-		virtual const char* GetClassName() {
-			return "Actor";
-		} virtual void Read(const rapidjson::Value& vlaue); 
-		virtual std::unique_ptr<Object> Clone() {
-			return std::make_unique<Actor>(*this);
-		} \
+		ClASS_DECLERATION(Actor)
 
 		Actor() = default;
 
@@ -23,7 +18,7 @@ namespace hop
 			transform{ transform }
 		{}
 
-		Actor(const Actor& other);
+		Actor(const Actor& other);	
 
 		virtual bool Initialize() override;
 		virtual void OnDestroy() override;

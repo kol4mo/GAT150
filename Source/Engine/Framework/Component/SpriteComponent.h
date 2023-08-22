@@ -10,9 +10,9 @@ namespace hop
 	public:
 		virtual const char* GetClassName() {
 			return "SpriteComponent";
-		} 
-		void Read(const rapidjson::Value& vlaue); 
-		class Register {
+		} virtual void Read(const rapidjson::Value& vlaue); virtual std::unique_ptr<Object> Clone() {
+			return std::make_unique<SpriteComponent>(*this);
+		} class Register {
 		public: Register() {
 			Factory::instance().Register<SpriteComponent>("SpriteComponent");
 		}

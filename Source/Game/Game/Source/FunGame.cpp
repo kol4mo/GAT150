@@ -14,8 +14,6 @@ bool FunGame::Initialize()
 	m_scoreText->Create(hop::g_renderer, "SCORE 0000", hop::Color(1, 1, 1, 1));
 	m_lifeText = std::make_unique<hop::Text>(GET_RESOURCE(hop::Font, "Arcade.ttf", 58));
 	m_lifeText->Create(hop::g_renderer, "Lives: 0", hop::Color(1, 1, 1, 1));
-	m_startText = std::make_unique<hop::Text>(GET_RESOURCE(hop::Font, "Arcade.ttf", 58));
-	m_startText->Create(hop::g_renderer, "Press Space to Start", hop::Color(1, 1, 1, 1));
 	hop::g_audioSystem.AddAudio("explode", "explode.wav");
 	hop::g_audioSystem.AddAudio("song", "song.wav");
 	
@@ -43,14 +41,17 @@ void FunGame::update(float dt)
 	switch (m_state)
 	{
 	case FunGame::eState::Title:
+		m_scene->GetActorByName("Title")->active = true;
 		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE))
 		{
 			m_state = eState::StartGame;
-			//auto actor = m_scene->GetActorByName<hop::Actor>("Background");
-			//if (actor) actor->active = false;
+			auto actor = m_scene->GetActorByName<hop::Actor>("Background");
+			if (actor) actor->active = false;
 		}
 		break;
 	case FunGame::eState::StartGame:
+
+		m_scene->GetActorByName("Title")->active = false;
 		m_score = 0;
 		m_lives = 3;
 		m_level = 0;
@@ -61,7 +62,16 @@ void FunGame::update(float dt)
 		m_scene->RemoveAll();
 
 		if (hop::random(2) == 0) {
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(0, 0, hop::Transform{ {hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, 0, 1});
+			auto powerup = INSTANTIATE(Enemy, "enemy1");
+			powerup->m_game = this;
+			powerup->Initialize();
+			powerup->m_speed = 0;
+			powerup->tag = "PowerUp";
+			powerup->transform = hop::Transform{ {hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, 0, 1 };
+			powerup->getComponent<hop::SpriteComponent>()->m_texture = GET_RESOURCE(hop::Texture, "power-UP.png", hop::g_renderer);
+			m_scene->Add(std::move(powerup));
+			/*
+			std::unique_ptr<hop::Enemy> enemy = std::make_unique<hop::Enemy>(0, 0, hop::Transform{ {hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, 0, 1});
 			enemy->tag = "PowerUp";
 			enemy->m_game = this;
 			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
@@ -72,54 +82,31 @@ void FunGame::update(float dt)
 			enemy->AddComponent(std::move(CollisionComponent));
 			enemy->Initialize();
 			m_scene->Add(std::move(enemy));
+			*/
 		}
 
 		difcur = (int)std::fabs((30* std::sin(10*(m_level-1))));
 		for (int i = 0; i < difcur; i++) {
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(200, 0, enemy->randomWallPos(1.5f));
-			enemy->tag = "Enemy";
+			auto enemy = INSTANTIATE(Enemy, "enemy1");
 			enemy->m_game = this;
-			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
-			component->m_texture = GET_RESOURCE(hop::Texture, "enemy.png", hop::g_renderer);
-			enemy->AddComponent(std::move(component));
-			auto CollisionComponent = std::make_unique<hop::CircleCollisionComponent>();
-			CollisionComponent->m_radius = 10.0f;
-			enemy->AddComponent(std::move(CollisionComponent));
 			enemy->Initialize();
+			enemy->transform = enemy->randomWallPos(1.5f);
 			m_scene->Add(std::move(enemy));
 		}		
 		difcur = (int)std::fabs(30* (1- fabs(std::sin(5*(m_level-1)))));
 		for (int i = 0; i < difcur; i++) {
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(300, 0, enemy->randomWallPos(1));
-			enemy->tag = "Enemy";
+			auto enemy = INSTANTIATE(Enemy, "enemy1");
 			enemy->m_game = this;
-			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
-			component->m_texture = GET_RESOURCE(hop::Texture, "enemy.png", hop::g_renderer);
-			enemy->AddComponent(std::move(component));
-			auto CollisionComponent = std::make_unique<hop::CircleCollisionComponent>();
-			CollisionComponent->m_radius = 10.0f;
-			enemy->AddComponent(std::move(CollisionComponent));
 			enemy->Initialize();
+			enemy->transform = enemy->randomWallPos(1.0f);
+			enemy->m_speed = 300;
 			m_scene->Add(std::move(enemy));
 		}
-		//create player
-		std::unique_ptr<Player> player = std::make_unique<Player>(200.0f, 0, hop::Transform{ {540, 270}, 0, 1 });
-		player->tag = "player";
+
+		auto player = INSTANTIATE(Player, "player");
 		player->m_game = this;
-		//create components
-		auto component = CREATE_CLASS(SpriteComponent)
-		component->m_texture = GET_RESOURCE(hop::Texture, "player.png", hop::g_renderer);
-		player->AddComponent(std::move(component));
-		auto physicsComponent = CREATE_CLASS(EnginePhysicsComponent)
-		player->AddComponent(std::move(physicsComponent));
-
-		auto CollisionComponent = CREATE_CLASS(CircleCollisionComponent)
-		CollisionComponent->m_radius = 10.0f;
-		player->AddComponent(std::move(CollisionComponent));
-
 		player->Initialize();
 		m_scene->Add(std::move(player));
-		//expand and aadd player->m_game = this;
 	}
 	m_state = eState::Game;
 		break;
@@ -164,13 +151,10 @@ void FunGame::update(float dt)
 
 void FunGame::draw(hop::Renderer& renderer)
 {
-	if (m_state == eState::Title) {
-		m_startText->Draw(renderer, 250, 250);
-	}
-
-	m_scoreText->Draw(renderer, 40, 40);
-	m_lifeText->Draw(renderer, 800, 40);
 
 	m_scene->Draw(renderer);
 	hop::g_particleSystem.Draw(renderer);
+
+	m_scoreText->Draw(renderer, 40, 40);
+	m_lifeText->Draw(renderer, 800, 40);
 }
