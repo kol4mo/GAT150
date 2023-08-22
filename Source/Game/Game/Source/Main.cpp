@@ -6,6 +6,7 @@
 #include "Audio/AudioSystem.h"
 #include "Player.h"	
 #include "Framework/Framework.h"
+#include "Physics/PhysicsSystem.h"
 #include "FunGame.h"
 #include <iostream>
 #include <chrono>
@@ -101,6 +102,7 @@ int main(int argc, char* argv[])
 
 	hop::g_inputSystem.Initialize();
 	hop::g_audioSystem.Initialize();
+	hop::PhysicsSystem::instance().Initialize();
 
 	unique_ptr<FunGame> game = make_unique<FunGame>();
 	game->Initialize();
