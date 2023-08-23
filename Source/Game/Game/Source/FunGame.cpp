@@ -85,7 +85,7 @@ void FunGame::update(float dt)
 			enemy->m_game = this;
 			enemy->Initialize();
 			enemy->transform = enemy->randomWallPos(1.0f);
-			enemy->m_speed = 300;
+			enemy->m_speed = 12;
 			m_scene->Add(std::move(enemy));
 		}
 

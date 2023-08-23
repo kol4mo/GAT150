@@ -26,17 +26,24 @@
 				"scale": 1.0,
 				"rotation": 0
 			},
-			"m_speed": 200,
+			"m_speed": 8,
 			"components": [
 				{
 					"type": "SpriteComponent",
 					"textureName": "player.png"
 				},
 				{
-					"type": "EnginePhysicsComponent"
+					"type": "Box2DPhysicsComponent",
+					"damping": 0.98,
+					"angularDamping": 2,
+					"gravityScale":  0
 				},
 				{
-					"type": "CircleCollisionComponent"
+					"type": "Box2DCollisionComponent",
+					"size": [
+						32,
+						32
+					]
 				}
 			]
 		},
@@ -50,14 +57,24 @@
 				"scale": 1.0,
 				"rotation": 0
 			},
-			"m_speed": 200,
+			"m_speed": 8,
 			"components": [
 				{
 					"type": "SpriteComponent",
 					"textureName": "enemy.png"
 				},
 				{
-					"type": "CircleCollisionComponent"
+					"type": "Box2DPhysicsComponent",
+					"damping": 0.98,
+					"angularDamping": 2,
+					"gravityScale": 0
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"size": [
+						32,
+						32
+					]
 				}
 			]
 		},

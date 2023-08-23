@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework/Actor.h"
 #include "Core/math/Vexctor2.h"
+#include "Framework/Component/Box2DPhysicsComponent.h"
 
 namespace hop {
 	class Enemy : public hop::Actor
@@ -31,5 +32,7 @@ namespace hop {
 
 		float m_fireTime = 0;
 		float m_fireTimer = 0;
+
+		hop::PhysicsComponent* m_physicsComponent;
 	};
 }

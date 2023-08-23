@@ -151,6 +151,8 @@ int main(int argc, char* argv[])
 			quit = true;
 		}
 
+		hop::PhysicsSystem::instance().Update(hop::g_time.GetDeltaTime());
+
 
 
 		//end = false;

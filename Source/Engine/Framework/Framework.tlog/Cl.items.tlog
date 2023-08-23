@@ -1,4 +1,6 @@
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Actor.cpp
+C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Component\Box2DCollisionComponent.cpp
+C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Component\Box2DPhysicsComponent.cpp
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Component\CircleCollisionComponent.cpp
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Component\EnginePhysicsComponent.cpp
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Component\ModelRenderComponent.cpp

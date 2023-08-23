@@ -15,6 +15,9 @@ namespace hop {
 	{
 		m_velocity += force;
 	}
+	void EnginePhysicsComponent::ApplyTorque(const float torque)
+	{
+	}
 	void EnginePhysicsComponent::Read(const json_t& value) {
 
 	}

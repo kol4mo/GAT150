@@ -5,6 +5,8 @@ Factory.h(68) Class Registered: SpriteComponent
 Factory.h(68) Class Registered: ModelRenderComponent
 Factory.h(68) Class Registered: EnginePhysicsComponent
 Factory.h(68) Class Registered: CircleCollisionComponent
+Factory.h(68) Class Registered: Box2DPhysicsComponent
+Factory.h(68) Class Registered: Box2DCollisionComponent
 Factory.h(68) Class Registered: Actor
 Main.cpp(96) Initialize Engine...
 Factory.h(76) Prototype Class Registered: player

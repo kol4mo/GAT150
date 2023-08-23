@@ -136,6 +136,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Component\Box2DCollisionComponent.h" />
+    <ClInclude Include="Component\Box2DPhysicsComponent.h" />
     <ClInclude Include="Component\CircleCollisionComponent.h" />
     <ClInclude Include="Component\CollisionComponent.h" />
     <ClInclude Include="Component\Component.h" />
@@ -158,6 +160,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Component\Box2DCollisionComponent.cpp" />
+    <ClCompile Include="Component\Box2DPhysicsComponent.cpp" />
     <ClCompile Include="Component\CircleCollisionComponent.cpp" />
     <ClCompile Include="Component\EnginePhysicsComponent.cpp" />
     <ClCompile Include="Component\ModelRenderComponent.cpp" />

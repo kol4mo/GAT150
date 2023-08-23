@@ -16,6 +16,8 @@
 #include "Component/EnginePhysicsComponent.h"
 #include "Component/CollisionComponent.h"
 #include "Component/CircleCollisionComponent.h"
+#include "Component/Box2DCollisionComponent.h"
+#include "Component/Box2DPhysicsComponent.h"
 
 #include "Resource/Resource.h"
 #include "Resource/ResourceManager.h"
