@@ -1,8 +1,9 @@
 #pragma once
 #include "Framework/Game.h"
 #include "Renderer/Text.h"
+#include "Framework/Event/EventManager.h"
 
-class FunGame : public hop::Game {
+class FunGame : public hop::Game, hop::IEventListener {
 public:
 	enum class eState
 	{
@@ -29,6 +30,8 @@ public:
 	virtual void draw(hop::Renderer& renderer) override;
 
 	void SetState(eState state) { m_state = state; }
+	void OnAddPoints(const hop::Event& event);
+	void OnPlayerDead(const hop::Event& event);
 	eState getState() { return m_state; }
 
 private:

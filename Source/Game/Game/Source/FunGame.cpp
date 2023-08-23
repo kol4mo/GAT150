@@ -22,13 +22,11 @@ bool FunGame::Initialize()
 	m_scene = std::make_unique<hop::Scene>();
 	m_scene->load("Scene.json");
 	m_scene->Initialize();
+	
+	EVENT_SUBSCRIBE("OnAddPoints", FunGame::OnAddPoints);
+	hop::EventManager::instance().subscribe("OnPlayerDead", this, std::bind(&FunGame::OnPlayerDead, this, std::placeholders::_1));
 
-	//for (int i = 0; i < (x * x); i++) {
-	//	unique_ptr<Enemy> enemy = make_unique<Enemy>(200, 0, hop::Transform{{hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, hop::randomDir(), 3}, hop::g_modelManager.Get("S.txt"));
-	//	enemy->m_tag = "Enemy";
-	//	enemy->m_game = this;
-	//	scene->Add(std::move(enemy));
-	//}
+
 	return true;
 }
 
@@ -70,19 +68,7 @@ void FunGame::update(float dt)
 			powerup->transform = hop::Transform{ {hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, 0, 1 };
 			powerup->getComponent<hop::SpriteComponent>()->m_texture = GET_RESOURCE(hop::Texture, "power-UP.png", hop::g_renderer);
 			m_scene->Add(std::move(powerup));
-			/*
-			std::unique_ptr<hop::Enemy> enemy = std::make_unique<hop::Enemy>(0, 0, hop::Transform{ {hop::random(hop::g_renderer.GetWidth()), hop::random(hop::g_renderer.GetHeight())}, 0, 1});
-			enemy->tag = "PowerUp";
-			enemy->m_game = this;
-			std::unique_ptr<hop::SpriteComponent> component = std::make_unique<hop::SpriteComponent>();
-			component->m_texture = GET_RESOURCE(hop::Texture, "power-UP.png", hop::g_renderer);
-			enemy->AddComponent(std::move(component));
-			auto CollisionComponent = std::make_unique<hop::CircleCollisionComponent>();
-			CollisionComponent->m_radius = 10.0f;
-			enemy->AddComponent(std::move(CollisionComponent));
-			enemy->Initialize();
-			m_scene->Add(std::move(enemy));
-			*/
+
 		}
 
 		difcur = (int)std::fabs((30* std::sin(10*(m_level-1))));
@@ -115,7 +101,8 @@ void FunGame::update(float dt)
 		if (m_scene->GetActor<hop::Actor>("Enemy") == nullptr) {
 			m_state = eState::StartLevel;
 			m_level++;
-			AddPoints(14);
+			hop::EventManager::instance().DispatchEvent("OnAddPoints", 14);
+			//AddPoints(14);
 		}
 	}
 		break;
@@ -132,7 +119,6 @@ void FunGame::update(float dt)
 			}
 			else {
 				m_state = eState::StartLevel;
-				m_lives--;
 			}
 		}
 
@@ -157,4 +143,16 @@ void FunGame::draw(hop::Renderer& renderer)
 
 	m_scoreText->Draw(renderer, 40, 40);
 	m_lifeText->Draw(renderer, 800, 40);
+}
+
+void FunGame::OnAddPoints(const hop::Event& event)
+{
+	m_score += std::get<int>(event.data);
+
+}
+
+void FunGame::OnPlayerDead(const hop::Event& event)
+{
+	m_lives--;
+	m_state = eState::PlayerDeadstart;
 }

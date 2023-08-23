@@ -6,6 +6,8 @@ Factory.h(68) Class Registered: ModelRenderComponent
 Factory.h(68) Class Registered: EnginePhysicsComponent
 Factory.h(68) Class Registered: CircleCollisionComponent
 Factory.h(68) Class Registered: Actor
-Main.cpp(72) Initialize Engine...
+Main.cpp(96) Initialize Engine...
 Factory.h(76) Prototype Class Registered: player
 Factory.h(76) Prototype Class Registered: enemy1
+EventManager.cpp(15) Event Subsribec:OnAddPoints
+EventManager.cpp(15) Event Subsribec:OnPlayerDead

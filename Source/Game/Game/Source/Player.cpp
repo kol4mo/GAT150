@@ -60,7 +60,7 @@ namespace hop {
 	void Player::OnCollision(Actor* actor)
 	{
 		if (actor->tag == "Enemy" && dynamic_cast<FunGame*>(m_game)->getState() == FunGame::eState::Game) {
-			dynamic_cast<FunGame*>(m_game)->SetState(FunGame::eState::PlayerDeadstart);
+			hop::EventManager::instance().DispatchEvent("OnPlayerDead", 0);
 			hop::EmitterData data;
 			data.burst = true;
 			data.burstCount = 100;
@@ -79,7 +79,7 @@ namespace hop {
 			m_scene->Add(std::move(emitter));
 		}
 		if (actor->tag == "PowerUp") {
-			dynamic_cast<FunGame*>(m_game)->AddPoints(50);
+			hop::EventManager::instance().DispatchEvent("OnAddPoints", 50);
 		}
 	}
 

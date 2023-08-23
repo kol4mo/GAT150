@@ -8,6 +8,7 @@
 #include "Framework/Framework.h"
 #include "Physics/PhysicsSystem.h"
 #include "FunGame.h"
+#include <functional>
 #include <iostream>
 #include <chrono>
 #include <vector>
@@ -55,9 +56,32 @@ public :
 //}
 //
 
+void print(int i) {
+	cout << i << endl;
+}
+
+class A {
+public:
+	int add(int i1, int i2) {
+		return i1 + i2;
+	}
+};
+
+union Data {
+
+};
+
 int main(int argc, char* argv[])
 {
+	void (*func_ptr)(int) = &print;
+	func_ptr(5);
 
+	int (*op_ptr)(int, int);
+
+	std::function<int(int, int)> op;
+
+	A a;
+	op = std::bind(&A::add, &a, std::placeholders::_1, std::placeholders::_2);
 
 	//int i = 5;
 	//zero(i);
