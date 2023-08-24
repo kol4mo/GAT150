@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework/Singleton.h"
 #include "Core/Math/Vexctor2.h"
+#include "ContactListener.h"
 #include <box2d/include/box2d/box2d.h>
 #include "box2d/include/box2d/b2_world.h"
 #include <memory>
@@ -49,5 +50,6 @@ namespace hop
 	private:
 		float m_pixelsPerUnit = 48.0f;
 		std::unique_ptr<b2World> m_world;
+		std::unique_ptr<b2ContactListener> m_contactListener;
 	};
 }

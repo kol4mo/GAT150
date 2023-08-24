@@ -16,13 +16,7 @@ namespace hop {
 		m_physicsComponent = getComponent<PhysicsComponent>();
 		auto collisionComponent = getComponent<hop::CollisionComponent>();
 		if (collisionComponent) {
-			auto renderComponent = getComponent<hop::RenderComponent>();
 
-			if (renderComponent) {
-
-				float scale = transform.scale;
-				collisionComponent->m_radius = renderComponent->GetRadius() * scale * 0.9f;
-			}
 		}
 
 		return true;
@@ -42,7 +36,7 @@ namespace hop {
 
 
 		hop::vec2 forward = hop::vec2{ 0, -1 }.Rotate(transform.rotation);
-		m_physicsComponent->ApplyForce(forward * m_speed);
+		m_physicsComponent->SetVelocity(forward * m_speed);
 		//m_transform.position.x = hop::Wrap(m_transform.position.x, (float)hop::g_renderer.GetWidth());
 		if (transform.position.y > hop::g_renderer.GetHeight() || transform.position.y < 0 || transform.position.x > hop::g_renderer.GetWidth() || transform.position.x < 0) {
 			destroyed = true;
@@ -61,7 +55,7 @@ namespace hop {
 	}
 
 
-	void Enemy::OnCollision(Actor* actor)
+	void Enemy::OnCollisionEnter(Actor* actor)
 	{
 		if (actor->tag == "player") {
 			destroyed = true;

@@ -20,7 +20,7 @@ bool FunGame::Initialize()
 	hop::g_audioSystem.PlayOneShot("song", true);
 
 	m_scene = std::make_unique<hop::Scene>();
-	m_scene->load("Scene.json");
+	m_scene->load("Scenes/SpaceScene.json");
 	m_scene->Initialize();
 	
 	EVENT_SUBSCRIBE("OnAddPoints", FunGame::OnAddPoints);

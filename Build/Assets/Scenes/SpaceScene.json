@@ -1,0 +1,103 @@
+{
+	"actors": [
+		{
+			"type": "Actor",
+			"name": "Background",
+			"persistent": true,
+			"transform": {
+				"position": [ 540, 270 ],
+				"scale": 1.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "background.jpg"
+				}
+			]
+		},
+		{
+			"type": "Player",
+			"name": "player",
+			"tag": "player",
+			"prototype": true,
+			"transform": {
+				"position": [ 540, 270 ],
+				"scale": 1.0,
+				"rotation": 0
+			},
+			"m_speed": 8,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "player.png"
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"damping": 0.98,
+					"angularDamping": 2,
+					"gravityScale":  0
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"size": [
+						32,
+						32
+					],
+					"isTrigger": true
+				}
+			]
+		},
+		{
+			"type": "Enemy",
+			"name": "enemy1",
+			"tag": "Enemy",
+			"prototype": true,
+			"transform": {
+				"position": [ 0, 0 ],
+				"scale": 1.0,
+				"rotation": 0
+			},
+			"m_speed": 8,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "enemy.png"
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"damping": 0.98,
+					"angularDamping": 100,
+					"gravityScale": 0
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"size": [
+						32,
+						32
+					],
+					"isTrigger":  true
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Title",
+			"persistent": true,
+			"transform": {
+				"position": [ 450, 200 ],
+				"scale": 0.3,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "TextRenderComponent",
+					"fontName": "Arcade.ttf",
+					"fontSize": 100,
+					"text": "press space to start"
+				}
+			]
+		}
+
+	]
+}

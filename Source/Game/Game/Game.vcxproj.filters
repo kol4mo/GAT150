@@ -26,9 +26,6 @@
     <ClInclude Include="Source\FunGame.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\Build\Assets\Scene.json" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Source\level1.json">
       <Filter>Source</Filter>
     </None>

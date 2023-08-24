@@ -17,13 +17,6 @@ namespace hop {
 		m_physicsComponent = getComponent<hop::PhysicsComponent>();
 		auto collisionComponent = getComponent<hop::CollisionComponent>();
 		if (collisionComponent) {
-			auto renderComponent = getComponent<hop::RenderComponent>();
-
-			if (renderComponent) {
-
-				float scale = transform.scale;
-				collisionComponent->m_radius = renderComponent->GetRadius() * scale;
-			}
 		}
 
 
@@ -46,7 +39,7 @@ namespace hop {
 		//}
 
 		auto physicsComponent = m_physicsComponent;
-		physicsComponent->ApplyForce(forward * m_speed * thrust);
+		physicsComponent->SetVelocity(forward * m_speed * thrust);
 
 		//m_transform.position += forward * m_speed * hop::g_time.GetDeltaTime();
 		transform.position.x = (float)hop::Wrap((int)transform.position.x, (int)hop::g_renderer.GetWidth());
@@ -57,7 +50,7 @@ namespace hop {
 		else hop::g_time.SetTimeScale(1.0f);
 	}
 
-	void Player::OnCollision(Actor* actor)
+	void Player::OnCollisionEnter(Actor* actor)
 	{
 		if (actor->tag == "Enemy" && dynamic_cast<FunGame*>(m_game)->getState() == FunGame::eState::Game) {
 			hop::EventManager::instance().DispatchEvent("OnPlayerDead", 0);

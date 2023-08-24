@@ -28,8 +28,8 @@ namespace hop
 
 		void AddComponent(std::unique_ptr<Component> component);
 
-		float GetRadius() { return 10.0f; };
-		virtual void OnCollision(Actor* other) {};
+		virtual void OnCollisionEnter(Actor* other) {};
+		virtual void OnCollisionExit(Actor* other) {};
 
 		template<typename T>
 		T* getComponent();
@@ -44,10 +44,10 @@ namespace hop
 
 		float lifespan = -1.0f;
 
+		bool destroyed = false;
 	protected:
 		std::vector<std::unique_ptr<Component>> components;
 
-		bool destroyed = false;
 		bool persistent = false;
 		bool prototype = false;
 

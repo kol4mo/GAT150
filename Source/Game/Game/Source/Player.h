@@ -20,7 +20,7 @@ namespace hop {
 		bool Initialize() override;
 
 		void Update(float dt) override;
-		void OnCollision(Actor* actor) override;
+		void OnCollisionEnter(Actor* actor) override;
 		Player() = default;
 	private:
 		float m_speed = 0;
