@@ -5,6 +5,7 @@ C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\C
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Component\EnginePhysicsComponent.cpp
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Component\ModelRenderComponent.cpp
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\component\ModelRenderComponent.h
+C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Component\SpriteAnimRenderComponent.cpp
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Component\SpriteComponent.cpp
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Emitter.cpp
 C:\Neumont\Q4\GAT150- intro to game programming\GAT150\Source\Engine\Framework\Event\EventManager.cpp

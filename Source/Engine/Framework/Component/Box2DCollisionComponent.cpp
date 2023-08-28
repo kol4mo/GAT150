@@ -1,6 +1,7 @@
 #include "Box2DCollisionComponent.h"
 #include "Box2DPhysicsComponent.h"
 #include "Framework/Actor.h"
+#include "SpriteComponent.h"
 
 namespace hop
 {
@@ -11,6 +12,14 @@ namespace hop
 		auto component = m_owner->getComponent<Box2DPhysicsComponent>();
 		if (component)
 		{
+			if (data.size.x == 0 && data.size.y == 0) {
+				auto spriteComponent = m_owner->getComponent<SpriteComponent>();
+				if (spriteComponent) {
+					data.size = vec2{ spriteComponent->source.w, spriteComponent->source.h };
+				}
+			
+			}
+
 			data.size = data.size * scaleOffset * m_owner->transform.scale;
 
 			if (component->m_body->GetType() == b2_staticBody)

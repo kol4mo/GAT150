@@ -89,4 +89,19 @@ namespace hop
 
 		SDL_RenderCopyEx(g_renderer.m_renderer, texture->m_texture, NULL, &dest, RadToDeg(mx.GetRotation()), NULL, SDL_FLIP_NONE);
 	}
+	void Renderer::DrawTexture(Texture* texture, const Rect& source, const Transform& transform)
+	{
+		mat3 mx = transform.GetMatrix();
+
+		vec2 position = mx.GetTranslation();
+		vec2 size = vec2{ source.w, source.h } * mx.getScale();
+
+		SDL_Rect dest;
+		dest.x = (int)(position.x - (size.x * 0.5f));
+		dest.y = (int)(position.y - (size.y * 0.5f));
+		dest.w = size.x;
+		dest.h = size.y;
+
+		SDL_RenderCopyEx(g_renderer.m_renderer, texture->m_texture, (SDL_Rect*)(&source), &dest, RadToDeg(mx.GetRotation()), NULL, SDL_FLIP_NONE);
+	}
 }

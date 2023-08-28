@@ -22,12 +22,11 @@ namespace hop
 		bool Initialize() override;
 		void Update(float dt) override;
 		void Draw(class Renderer& renderer) override;
-		
-		float GetRadius() override { return m_texture->GetSize().length() * 0.5f; }
 
 
 
 	public:
+		Rect source;
 		std::string textureName;
 		res_t<Texture> m_texture;
 	};

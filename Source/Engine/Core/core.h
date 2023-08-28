@@ -7,6 +7,8 @@
 #include "Time.h"
 
 #include "math/Vexctor2.h"
+#include "Math/Vector3.h"
 #include "math/Transform.h"
 #include "math/MathUtils.h"
 #include "math/Color.h"
+#include "Math/Rect.h"

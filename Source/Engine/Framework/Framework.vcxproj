@@ -144,6 +144,7 @@
     <ClInclude Include="Component\EnginePhysicsComponent.h" />
     <ClInclude Include="component\PhysicsComponent.h" />
     <ClInclude Include="Component\RenderComponent.h" />
+    <ClInclude Include="Component\SpriteAnimRenderComponent.h" />
     <ClInclude Include="Component\SpriteComponent.h" />
     <ClInclude Include="Emitter.h" />
     <ClInclude Include="Event\Event.h" />
@@ -166,6 +167,7 @@
     <ClCompile Include="Component\EnginePhysicsComponent.cpp" />
     <ClCompile Include="Component\ModelRenderComponent.cpp" />
     <ClCompile Include="component\ModelRenderComponent.h" />
+    <ClCompile Include="Component\SpriteAnimRenderComponent.cpp" />
     <ClCompile Include="Component\SpriteComponent.cpp" />
     <ClCompile Include="Emitter.cpp" />
     <ClCompile Include="Event\EventManager.cpp" />
