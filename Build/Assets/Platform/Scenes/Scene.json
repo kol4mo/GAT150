@@ -1,0 +1,212 @@
+{
+	"actors": [
+		{
+			"type": "Actor",
+			"name": "Background",
+			"persistent": true,
+			"transform": {
+				"position": [ 480, 272 ],
+				"scale": 2.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Textures/Background/Background.png",
+					"source": [ 0, 0, 480, 272 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Coin",
+			"persistent": true,
+			"transform": {
+				"position": [ 480, 272 ],
+				"scale": 1.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteAnimRenderComponent",
+					"defaultSequence": "idle",
+					"sequences": [
+						{
+							"name": "idle",
+							"fps": 12,
+							"numColumns": 8,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 8,
+							"textureName": "Textures/Assets/coin.png"
+						}
+					]
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"damping": 0,
+					"gravityScale": 1,
+					"constrainAgle": true
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"resitution": 0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Crate",
+			"tag": "Ground",
+			"persistent": true,
+			"prototype": true,
+			"transform": {
+				"position": [ 380, 300 ],
+				"scale": 1.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Textures/Assets/Crate.jpg"
+
+				},
+				{
+					"type": "Box2DPhysicsComponent"
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"resitution": 0.1
+				}
+			]
+		},
+		{
+			"type": "Player",
+			"name": "Player",
+			"tag": "Player",
+			"persistent": true,
+			"m_speed": 100,
+			"m_jump": 10,
+			"transform": {
+				"position": [ 440, 32 ],
+				"scale": 2.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteAnimRenderComponent",
+					"defaultSequenceName": "idle",
+					"sequences": [
+						{
+							"name": "idle",
+							"fps": 8,
+							"numColumns": 4,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 4,
+							"textureName": "Textures/Character/Idle/Idle-Sheet.png"
+						},
+						{
+							"name": "run",
+							"fps": 8,
+							"numColumns": 8,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 8,
+							"textureName": "Textures/Character/Run/Run-Sheet.png"
+						}
+					]
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"damping": 0,
+					"gravityScale": 1,
+					"constrainAngle": true
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"resitution": 0
+				}
+			]
+		},
+		{
+			"type": "Enemy",
+			"name": "Bee",
+			"tag": "Enemy",
+			"persistent": true,
+			"m_speed": 100,
+			"m_jump": 10,
+			"transform": {
+				"position": [ 40, 200 ],
+				"scale": 2.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteAnimRenderComponent",
+					"defaultSequenceName": "idle",
+					"sequences": [
+						{
+							"name": "idle",
+							"fps": 8,
+							"numColumns": 4,
+							"numRows": 1,
+							"startFrame": 1,
+							"endFrame": 4,
+							"textureName": "Textures/Mob/Small Bee/Fly/Fly-Sheet.png"
+						}
+					]
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"gravityScale": 0,
+					"constrainAngle": true
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"resitution": 0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Title",
+			"persistent": true,
+			"transform": {
+				"position": [ 450, 200 ],
+				"scale": 2.0,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "TextRenderComponent",
+					"fontName": "Textures/Font/LoveShine.ttf",
+					"fontSize": 48,
+					"text": "GAY!",
+					"color": [ 0, 0, 0, 1 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"tag": "Ground",
+			"transform": {
+				"position": [
+					400,
+					520
+				]
+			},
+			"components": [
+				{
+					"type": "Box2DPhysicsComponent",
+					"isDynamic": false
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"size": [ 600, 20 ]
+				}
+			]
+		}
+
+	]
+}

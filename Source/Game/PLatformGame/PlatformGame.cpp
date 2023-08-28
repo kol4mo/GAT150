@@ -33,7 +33,13 @@ void PlatformGame::update(float dt)
 	switch (m_state)
 	{
 	case PlatformGame::eState::Title:
-		
+	{
+		auto actor = INSTANTIATE(Actor, "Crate");
+		actor->transform.position = { hop::random(0, hop::g_renderer.GetWidth()), 300};
+		actor->Initialize();
+		m_scene->Add(std::move(actor));
+		m_state = PlatformGame::eState::StartGame;
+	}
 		break;
 	case PlatformGame::eState::StartGame:
 

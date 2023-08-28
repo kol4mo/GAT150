@@ -14,8 +14,8 @@ void hop::ContactListener::BeginContact(b2Contact* contact)
 
 		if (actorA->destroyed || actorB->destroyed) return;
 
-		//actorA->OnCollisionEnter(actorB);
-		//actorB->OnCollisionEnter(actorA);
+		actorA->OnCollisionEnter(actorB);
+		actorB->OnCollisionEnter(actorA);
 	}
 }
 
@@ -31,7 +31,7 @@ void hop::ContactListener::EndContact(b2Contact* contact)
 
 		if (actorA->destroyed || actorB->destroyed) return;
 
-		//actorA->OnCollisionExit(actorB);
-		//actorB->OnCollisionExit(actorA);
+		actorA->OnCollisionExit(actorB);
+		actorB->OnCollisionExit(actorA);
 	}
 }

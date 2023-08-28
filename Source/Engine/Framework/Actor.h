@@ -17,7 +17,9 @@ namespace hop
 		Actor(const hop::Transform & transform) :
 			transform{ transform }
 		{}
-
+		virtual ~Actor() {
+			OnDestroy();
+		}
 		Actor(const Actor& other);	
 
 		virtual bool Initialize() override;
