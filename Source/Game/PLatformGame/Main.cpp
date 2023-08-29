@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
 
 
 	hop::g_renderer.Initialize();
-	hop::g_renderer.CreateWindow("CSC196", 960, 544);
+	hop::g_renderer.CreateWindow("CSC196", 800, 600);
 
 	hop::g_inputSystem.Initialize();
 	hop::g_audioSystem.Initialize();

@@ -39,5 +39,8 @@
     <None Include="..\..\..\Build\Assets\Platform\Scenes\Scene.json">
       <Filter>Resource</Filter>
     </None>
+    <None Include="..\..\..\Build\Assets\Platform\Scenes\tilemap.json">
+      <Filter>Resource</Filter>
+    </None>
   </ItemGroup>
 </Project>

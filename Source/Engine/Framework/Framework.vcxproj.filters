@@ -85,6 +85,9 @@
     <ClInclude Include="Component\SpriteAnimRenderComponent.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Component\TilemapComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp">
@@ -127,6 +130,9 @@
       <Filter>Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="Component\SpriteAnimRenderComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\TilemapComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
   </ItemGroup>

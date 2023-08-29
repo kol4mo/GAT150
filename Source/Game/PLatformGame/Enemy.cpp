@@ -24,19 +24,13 @@ namespace hop {
 
 		Actor::Update(dt);
 
+		hop::vec2 forward = hop::vec2{ 0, -1 }.Rotate(transform.rotation);
 		Player* player = m_scene->GetActor<Player>();
 		if (player)
 		{
 			hop::vec2 direction = player->transform.position - transform.position;
+			m_physicsComponent->ApplyForce(direction.Normalized() * m_speed);
 		}
-		float dir = 0;
-
-		//if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) dir = -1;
-		//if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_D)) dir = 1;
-
-		hop::vec2 forward = hop::vec2{ 1, 0 };
-
-		m_physicsComponent->ApplyForce(forward * m_speed * dir);
 
 
 

@@ -14,6 +14,7 @@ namespace hop {
 		Actor::Initialize();
 
 		m_physicsComponent = getComponent<hop::PhysicsComponent>();
+		m_SpriteComponent = getComponent<SpriteAnimRenderComponent>();
 
 		return true;
 	}
@@ -22,7 +23,8 @@ namespace hop {
 	{
 
 		Actor::Update(dt);
-
+		
+		//move
 		float dir = 0;
 		
 		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) dir = -1;
@@ -34,12 +36,21 @@ namespace hop {
 
 		bool onGround = (groundCount > 0);
 
-		
+		//jump
 		if ( onGround && hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !hop::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE)) {
 			hop::vec2 up = hop::vec2{ 0, -1 };
 			m_physicsComponent->SetVelocity(up * m_jump);
 		}
 
+		//animation
+		vec2 velocity = m_physicsComponent->m_velocity;
+		if (std::fabs(velocity.x) > 0.2f) {
+			if (dir!= 0) m_SpriteComponent->flipH = (velocity.x < 0);
+			m_SpriteComponent->SetSequence("run");
+		}
+		else {
+			m_SpriteComponent->SetSequence("idle");
+		}
 	}
 
 	void Player::OnCollisionEnter(Actor* actor)

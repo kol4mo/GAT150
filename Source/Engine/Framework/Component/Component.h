@@ -1,5 +1,6 @@
 #pragma once
 #include "Framework/Object.h"
+#include "Framework/Actor.h"
 
 namespace hop
 {

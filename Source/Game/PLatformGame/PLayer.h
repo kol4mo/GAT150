@@ -25,5 +25,6 @@ namespace hop {
 		int groundCount = 0;
 
 		hop::PhysicsComponent* m_physicsComponent = nullptr;
+		class SpriteAnimRenderComponent* m_SpriteComponent = nullptr;
 	};
 }
