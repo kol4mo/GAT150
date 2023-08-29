@@ -1,4 +1,4 @@
-#include "SpriteAnimRenderComponent.h"
+	#include "SpriteAnimRenderComponent.h"
 #include "Renderer/Renderer.h"
 #include "Framework/Actor.h"
 #include "Framework/Resource/ResourceManager.h"

@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "Player.h"
 #include "Input/InputSystem.h"
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
@@ -23,6 +24,11 @@ namespace hop {
 
 		Actor::Update(dt);
 
+		Player* player = m_scene->GetActor<Player>();
+		if (player)
+		{
+			hop::vec2 direction = player->transform.position - transform.position;
+		}
 		float dir = 0;
 
 		//if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) dir = -1;
