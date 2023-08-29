@@ -19,6 +19,7 @@
 #include "Component/Box2DCollisionComponent.h"
 #include "Component/Box2DPhysicsComponent.h"
 #include "Component/SpriteAnimRenderComponent.h"
+#include "Component/TilemapComponent.h"
 
 #include "Resource/Resource.h"
 #include "Resource/ResourceManager.h"

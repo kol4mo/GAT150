@@ -2,7 +2,7 @@
 #include "Framework/Actor.h"
 #include "Framework/Scene.h"
 
-namespace kiko
+namespace hop
 {
     CLASS_DEFINITION(TilemapComponent)
 

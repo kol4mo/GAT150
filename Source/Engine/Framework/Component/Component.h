@@ -1,6 +1,5 @@
 #pragma once
 #include "Framework/Object.h"
-#include "Framework/Actor.h"
 
 namespace hop
 {
@@ -11,9 +10,9 @@ namespace hop
 
 		friend class Actor;
 
-		Actor* GetOwner() { return m_owner; }
 
-	protected:
+
 		 class Actor* m_owner = nullptr;
+	protected:
 	};
 }

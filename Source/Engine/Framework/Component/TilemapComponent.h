@@ -1,13 +1,13 @@
 #pragma once
-#include "Components/Component.h"
+#include "Component.h"
 #include <vector>
 
-namespace kiko
+namespace hop
 {
 	class TilemapComponent : public Component
 	{
 	public:
-		CLASS_DECLARATION(TilemapComponent)
+		ClASS_DECLERATION(TilemapComponent)
 
 		bool Initialize() override;
 		void Update(float dt) override;

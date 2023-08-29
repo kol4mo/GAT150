@@ -6,17 +6,17 @@
 			"tag":"Ground",
 			"prototype":true,
 			"transform":{
-				"scale": 2
+				"scale": 4
 			},
 			"components":[
 				{
-					"type":"SpriteAnimRenderComponent",
-					"textureName":"Textures/tileset2_32x32.png",
+					"type":"SpriteComponent",
+					"textureName":"Textures/tileset.png",
 					"source":[
-						96,
-						416,
-						32,
-						32
+						16,
+						0,
+						16,
+						16
 					]
 				},
 				{
@@ -35,17 +35,17 @@
 			"tag":"Ground",
 			"prototype":true,
 			"transform":{
-				"scale": 2
+				"scale": 4
 			},
 			"components": [
 				{
-					"type": "SpriteAnimRenderComponent",
-					"textureName": "Textures/tileset2_32x32.png",
+					"type": "SpriteComponent",
+					"textureName": "Textures/tileset.png",
 					"source": [
-						0,
-						128,
-						32,
-						32
+						16,
+						48,
+						16,
+						16
 					]
 				},
 				{

@@ -15,8 +15,8 @@ bool PlatformGame::Initialize()
 
 	m_scene = std::make_unique<hop::Scene>();
 	m_scene->load("Scenes/Scene.json");
+	m_scene->load("Scenes/tilemap.json");
 	m_scene->Initialize();
-
 	EVENT_SUBSCRIBE("OnAddPoints", PlatformGame::OnAddPoints);
 	hop::EventManager::instance().subscribe("OnPlayerDead", this, std::bind(&PlatformGame::OnPlayerDead, this, std::placeholders::_1));
 

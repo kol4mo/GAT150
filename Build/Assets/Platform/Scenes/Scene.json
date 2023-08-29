@@ -89,7 +89,7 @@
 			"m_jump": 7,
 			"transform": {
 				"position": [ 440, 32 ],
-				"scale": 1.0,
+				"scale": 1,
 				"rotation": 0
 			},
 			"components": [
@@ -134,11 +134,11 @@
 			"name": "Bee",
 			"tag": "Enemy",
 			"persistent": true,
-			"m_speed": 10,
+			"m_speed": 5,
 			"m_jump": 10,
 			"transform": {
 				"position": [ 40, 200 ],
-				"scale": 2.0,
+				"scale": 1.5,
 				"rotation": 0
 			},
 			"components": [
@@ -186,26 +186,6 @@
 					"fontSize": 48,
 					"text": "GAY!",
 					"color": [ 0, 0, 0, 1 ]
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"tag": "Ground",
-			"transform": {
-				"position": [
-					400,
-					520
-				]
-			},
-			"components": [
-				{
-					"type": "Box2DPhysicsComponent",
-					"isDynamic": false
-				},
-				{
-					"type": "Box2DCollisionComponent",
-					"size": [ 600, 20 ]
 				}
 			]
 		}

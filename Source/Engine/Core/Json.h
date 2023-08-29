@@ -1,6 +1,7 @@
 #pragma once
 #include <rapidjson/include/rapidjson/document.h>
 #include <string>
+#include <vector>
 #include "Math/Vexctor2.h"
 #include "Math/Color.h"
 #include "Math/Rect.h"
