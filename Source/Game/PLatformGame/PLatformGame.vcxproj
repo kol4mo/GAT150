@@ -155,14 +155,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Collectable.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Interactable.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PlatformBlock.cpp" />
     <ClCompile Include="PlatformGame.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Collectable.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Interactable.h" />
     <ClInclude Include="PlatformBlock.h" />
     <ClInclude Include="PlatformGame.h" />
     <ClInclude Include="PLayer.h" />

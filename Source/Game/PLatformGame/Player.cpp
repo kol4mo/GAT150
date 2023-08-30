@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Interactable.h"
 #include "Input/InputSystem.h"
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
@@ -24,17 +25,21 @@ namespace hop {
 
 		Actor::Update(dt);
 		
+		vec2 velocity = m_physicsComponent->m_velocity;
+		bool onGround = (groundCount > 0);
 		//move
 		float dir = 0;
 		
 		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) dir = -1;
 		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_D)) dir = 1;
-
-		hop::vec2 forward = hop::vec2{ 1, 0 };
-
-		m_physicsComponent->ApplyForce(forward * m_speed * dir);
-
-		bool onGround = (groundCount > 0);
+		if (dir) {
+			hop::vec2 forward = hop::vec2{ 1, 0 };
+			velocity.x += m_speed * dir * ((onGround) ? 1 : 0.25f) * dt;
+			velocity.x = Clamp(velocity.x, -maxSpeed, maxSpeed);
+			m_physicsComponent->SetVelocity(velocity);
+		}
+		//m_physicsComponent->SetVelocity(forward * m_speed * dir );
+		 
 
 		//jump
 		if ( onGround && hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !hop::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE)) {
@@ -43,7 +48,6 @@ namespace hop {
 		}
 
 		//animation
-		vec2 velocity = m_physicsComponent->m_velocity;
 		if (std::fabs(velocity.x) > 0.2f) {
 			if (dir!= 0) m_SpriteComponent->flipH = (velocity.x < 0);
 			m_SpriteComponent->SetSequence("run");
@@ -57,9 +61,17 @@ namespace hop {
 	{
 		if (actor->tag == "Enemy") {
 			destroyed = true;
+		}		
+		if (actor->tag == "Coin") {
+			coins++;
 		}
-
+		if (actor->tag == "Key") {
+			hasKey = true;
+		}
 		if (actor->tag == "Ground") groundCount++;
+		if (actor->tag == "Win" && hasKey) {
+			win = true;
+		}
 	}
 
 	void Player::OnCollisionExit(Actor* actor)
@@ -72,6 +84,7 @@ namespace hop {
 
 		READ_DATA(value, m_speed);
 		READ_DATA(value, m_jump);
+		READ_DATA(value, maxSpeed);
 	}
 
 }

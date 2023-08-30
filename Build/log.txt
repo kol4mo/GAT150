@@ -1,4 +1,7 @@
+Factory.h(68) Class Registered: Collectable
+Factory.h(68) Class Registered: Door
 Factory.h(68) Class Registered: Enemy
+Factory.h(68) Class Registered: Interactable
 Factory.h(68) Class Registered: PlatformBlock
 Factory.h(68) Class Registered: Player
 Factory.h(68) Class Registered: TextRenderComponent
@@ -14,6 +17,7 @@ Factory.h(68) Class Registered: Actor
 Main.cpp(28) Initialize Engine...
 Factory.h(76) Prototype Class Registered: Coin
 Factory.h(76) Prototype Class Registered: Crate
+Factory.h(76) Prototype Class Registered: DissapearingBlock
 Factory.h(76) Prototype Class Registered: Bee
 Factory.h(76) Prototype Class Registered: tile01
 Factory.h(76) Prototype Class Registered: tile02

@@ -18,11 +18,17 @@ namespace hop {
 		void OnCollisionEnter(Actor* actor) override;
 		void OnCollisionExit(Actor* actor) override;
 
+		bool win = false;
+
 	private:
 		float m_speed = 0;
+		float maxSpeed = 0;
 		float m_jump = 0;
 
 		int groundCount = 0;
+
+		int coins = 0;
+		bool hasKey = false;
 
 		hop::PhysicsComponent* m_physicsComponent = nullptr;
 		class SpriteAnimRenderComponent* m_SpriteComponent = nullptr;

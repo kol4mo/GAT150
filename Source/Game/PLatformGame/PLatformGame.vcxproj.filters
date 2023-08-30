@@ -26,6 +26,15 @@
     <ClCompile Include="PlatformBlock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Interactable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Collectable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlatformGame.h">
@@ -38,6 +47,15 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="PlatformBlock.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactable.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Collectable.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

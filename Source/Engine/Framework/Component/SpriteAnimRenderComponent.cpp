@@ -46,9 +46,10 @@ namespace hop {
 	{
 		SpriteComponent::Initialize();
 		
-		SetSequence(defaultSequenceName);
-		UpdateSource();
-		
+		SetSequence(defaultSequenceName, false);
+		if (source.w == 0 && source.h == 0) {
+			UpdateSource();
+		}
 		return true;
 	}
 
@@ -68,7 +69,7 @@ namespace hop {
 
 	}
 
-	void SpriteAnimRenderComponent::SetSequence(const std::string& name)
+	void SpriteAnimRenderComponent::SetSequence(const std::string& name, bool update)
 	{
 		if (m_sequence && m_sequence->name == name) return;
 
@@ -77,6 +78,7 @@ namespace hop {
 			if (m_sequence->texture) m_texture = m_sequence->texture;
 			frame = m_sequence->startFrame;
 			frameTimer = 1.0f / m_sequence->fps;
+			if (update) UpdateSource();
 		}
 	}
 

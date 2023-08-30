@@ -1,5 +1,6 @@
 #include "PlatformGame.h"
 #include "Framework/Framework.h"
+#include "PLayer.h"
 #include "Core/core.h"
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
@@ -40,6 +41,7 @@ void PlatformGame::update(float dt)
 	case PlatformGame::eState::StartGame:
 	{
 
+		m_scene->GetActorByName("Title")->active = false;
 		m_state = PlatformGame::eState::StartLevel;
 	}
 		
@@ -47,14 +49,36 @@ void PlatformGame::update(float dt)
 	case PlatformGame::eState::StartLevel:
 	{
 		auto actor = INSTANTIATE(Actor, "Crate");
-		actor->transform.position = { 128, 500 };
+		actor->transform.position = { 134, 563 };
 		actor->Initialize();
 		m_scene->Add(std::move(actor));
+		auto b1 = INSTANTIATE(Actor, "DissapearingBlock");
+		b1->Initialize();
+		m_scene->Add(std::move(b1));
+		auto b2 = INSTANTIATE(Actor, "DissapearingBlock");
+		b2->transform.position = { 304, 112 };
+		b2->Initialize();
+		m_scene->Add(std::move(b2));
+		auto b3 = INSTANTIATE(Actor, "DissapearingBlock");
+		b3->transform.position = { 400, 112 };
+		b3->Initialize();
+		m_scene->Add(std::move(b3));
+		auto coin1 = INSTANTIATE(Actor, "Coin");
+		coin1->transform.position = { 304, 80 };
+		coin1->Initialize();
+		m_scene->Add(std::move(coin1));
+		auto coin2 = INSTANTIATE(Actor, "Coin");
+		coin2->transform.position = { 752, 80 };
+		coin2->Initialize();
+		m_scene->Add(std::move(coin2));
 
 	}
 	m_state = eState::Game;
 	break;
 	case PlatformGame::eState::Game: 
+		if (dynamic_cast<hop::Player*>(m_scene->GetActorByName("Player"))->win) {
+			m_scene->GetActorByName("Title")->active = true;
+		}
 		break;
 	case eState::PlayerDeadstart:
 		break;
