@@ -29,8 +29,6 @@ namespace hop {
 		}
 
 
-		Actor::Update(dt);
-
 		if (m_timerOne < 0 && m_timerOne != -1) {
 			m_timerTwo = 2;
 			m_timerOne = -1;
@@ -40,9 +38,11 @@ namespace hop {
 
 		if (m_timerTwo < 0 && m_timerTwo != -1) {
 			m_timerTwo = -1;
-			m_collisionComponent->setTrigger(false);
 			active = true;
+			m_collisionComponent->setTrigger(false);
 		}
+
+		Actor::Update(dt);
 
 
 
@@ -51,7 +51,7 @@ namespace hop {
 
 	void PlatformBlock::OnCollisionEnter(Actor* actor)
 	{
-		if (actor->tag == "player") {
+		if (actor->tag == "Player") {
 			m_timerOne = 3;
 		}
 

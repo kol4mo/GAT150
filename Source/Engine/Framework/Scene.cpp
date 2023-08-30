@@ -14,7 +14,7 @@ namespace hop
 
 		auto iter = m_actors.begin();
 		while (iter != m_actors.end()) {
-			if ((*iter)->active) (*iter)->Update(dt);
+			if ((*iter)->active || (*iter)->name == "DissapearingBlock") (*iter)->Update(dt);
 			iter = ((*iter)->destroyed) ? m_actors.erase(iter) : ++iter;
 
 		}

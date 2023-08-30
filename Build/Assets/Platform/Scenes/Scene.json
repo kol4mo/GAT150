@@ -5,15 +5,33 @@
 			"name": "Background",
 			"persistent": true,
 			"transform": {
-				"position": [ 480, 272 ],
-				"scale": 2.0,
+				"position": [ 400, 300 ],
+				"scale": 1.0,
 				"rotation": 0
 			},
 			"components": [
 				{
 					"type": "SpriteComponent",
-					"textureName": "Textures/Background/Background.png",
-					"source": [ 0, 0, 480, 272 ]
+					"textureName": "Textures/Background/GBackground.png"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Title",
+			"persistent": true,
+			"transform": {
+				"position": [ 425, 325 ],
+				"scale": 1.3,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "TextRenderComponent",
+					"fontName": "Textures/Font/LoveShine.ttf",
+					"fontSize": 48,
+					"text": "GAY",
+					"color": [ 0, 0, 0, 1 ]
 				}
 			]
 		},
@@ -83,12 +101,40 @@
 			]
 		},
 		{
+			"type": "PlatformBlock",
+			"name": "DissapearingBlock",
+			"tag": "Ground",
+			"persistent": true,
+			"transform": {
+				"position": [ 208, 112 ],
+				"scale": 2,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Textures/Assets/Cloud.png"
+
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"constrainAngle": true,
+					"gravityScale": 0,
+					"isDynamic": false
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"resitution": 0
+				}
+			]
+		},
+		{
 			"type": "Player",
 			"name": "Player",
 			"tag": "Player",
 			"persistent": true,
-			"m_speed": 2,
-			"m_jump": 5,
+			"m_speed": 1.5,
+			"m_jump": 3,
 			"transform": {
 				"position": [ 64, 500 ],
 				"scale": 1,
@@ -111,10 +157,10 @@
 						{
 							"name": "run",
 							"fps": 8,
-							"numColumns": 8,
+							"numColumns": 6,
 							"numRows": 1,
 							"startFrame": 1,
-							"endFrame": 8,
+							"endFrame": 6,
 							"textureName": "Textures/Character/Run/CharacterWalk.png"
 						}
 					]
@@ -170,25 +216,6 @@
 					"type": "Box2DCollisionComponent",
 					"resitution": 0,
 					"isTrigger": true
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "Title",
-			"persistent": true,
-			"transform": {
-				"position": [ 400, 50 ],
-				"scale": 2.0,
-				"rotation": 0
-			},
-			"components": [
-				{
-					"type": "TextRenderComponent",
-					"fontName": "Textures/Font/LoveShine.ttf",
-					"fontSize": 48,
-					"text": "GAY!",
-					"color": [ 0, 0, 0, 1 ]
 				}
 			]
 		}
