@@ -39,6 +39,11 @@ namespace hop
 	{
 	}
 
+	void Box2DCollisionComponent::setTrigger(bool tf)
+	{
+		data.isTrigger = tf;
+	}
+
 	void Box2DCollisionComponent::Read(const json_t& value)
 	{
 		READ_NAME_DATA(value, "size", data.size);

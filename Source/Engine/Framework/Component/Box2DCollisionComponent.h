@@ -15,6 +15,7 @@ namespace hop
 
 			virtual bool Initialize() override;
 		virtual void Update(float dt) override;
+		void setTrigger(bool tf);
 
 	private:
 		PhysicsSystem::CollisionData data;

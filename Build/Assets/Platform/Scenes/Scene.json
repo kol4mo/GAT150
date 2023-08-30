@@ -21,6 +21,7 @@
 			"type": "Actor",
 			"name": "Coin",
 			"persistent": true,
+			"prototype":  true,
 			"transform": {
 				"position": [ 480, 272 ],
 				"scale": 1.0,
@@ -62,7 +63,7 @@
 			"prototype": true,
 			"transform": {
 				"position": [ 380, 300 ],
-				"scale": 1.0,
+				"scale": 0.5,
 				"rotation": 0
 			},
 			"components": [
@@ -72,7 +73,8 @@
 
 				},
 				{
-					"type": "Box2DPhysicsComponent"
+					"type": "Box2DPhysicsComponent",
+					"constrainAngle": true
 				},
 				{
 					"type": "Box2DCollisionComponent",
@@ -85,10 +87,10 @@
 			"name": "Player",
 			"tag": "Player",
 			"persistent": true,
-			"m_speed": 20,
-			"m_jump": 7,
+			"m_speed": 2,
+			"m_jump": 5,
 			"transform": {
-				"position": [ 440, 32 ],
+				"position": [ 64, 500 ],
 				"scale": 1,
 				"rotation": 0
 			},
@@ -104,7 +106,7 @@
 							"numRows": 1,
 							"startFrame": 1,
 							"endFrame": 4,
-							"textureName": "Textures/Character/Idle/Idle-Sheet.png"
+							"textureName": "Textures/Character/Idle/CharacterIdle.png"
 						},
 						{
 							"name": "run",
@@ -113,7 +115,7 @@
 							"numRows": 1,
 							"startFrame": 1,
 							"endFrame": 8,
-							"textureName": "Textures/Character/Run/Run-Sheet.png"
+							"textureName": "Textures/Character/Run/CharacterWalk.png"
 						}
 					]
 				},
@@ -134,7 +136,8 @@
 			"name": "Bee",
 			"tag": "Enemy",
 			"persistent": true,
-			"m_speed": 5,
+			"prototype": true,
+			"m_speed": 3,
 			"m_jump": 10,
 			"transform": {
 				"position": [ 40, 200 ],
@@ -175,7 +178,7 @@
 			"name": "Title",
 			"persistent": true,
 			"transform": {
-				"position": [ 450, 200 ],
+				"position": [ 400, 50 ],
 				"scale": 2.0,
 				"rotation": 0
 			},

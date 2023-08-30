@@ -34,20 +34,24 @@ void PlatformGame::update(float dt)
 	{
 	case PlatformGame::eState::Title:
 	{
-		auto actor = INSTANTIATE(Actor, "Crate");
-		actor->transform.position = { hop::random(0, hop::g_renderer.GetWidth()), 300};
-		actor->Initialize();
-		m_scene->Add(std::move(actor));
 		m_state = PlatformGame::eState::StartGame;
 	}
 		break;
 	case PlatformGame::eState::StartGame:
+	{
 
+		m_state = PlatformGame::eState::StartLevel;
+	}
 		
 		break;
 	case PlatformGame::eState::StartLevel:
-	
-	
+	{
+		auto actor = INSTANTIATE(Actor, "Crate");
+		actor->transform.position = { 128, 500 };
+		actor->Initialize();
+		m_scene->Add(std::move(actor));
+
+	}
 	m_state = eState::Game;
 	break;
 	case PlatformGame::eState::Game: 

@@ -1,4 +1,5 @@
 Factory.h(68) Class Registered: Enemy
+Factory.h(68) Class Registered: PlatformBlock
 Factory.h(68) Class Registered: Player
 Factory.h(68) Class Registered: TextRenderComponent
 Factory.h(68) Class Registered: TilemapComponent
@@ -11,8 +12,23 @@ Factory.h(68) Class Registered: Box2DPhysicsComponent
 Factory.h(68) Class Registered: Box2DCollisionComponent
 Factory.h(68) Class Registered: Actor
 Main.cpp(28) Initialize Engine...
+Factory.h(76) Prototype Class Registered: Coin
 Factory.h(76) Prototype Class Registered: Crate
+Factory.h(76) Prototype Class Registered: Bee
 Factory.h(76) Prototype Class Registered: tile01
 Factory.h(76) Prototype Class Registered: tile02
+Factory.h(76) Prototype Class Registered: tile03
+Factory.h(76) Prototype Class Registered: tile04
+Factory.h(76) Prototype Class Registered: tile05
+Factory.h(76) Prototype Class Registered: tile06
+Factory.h(76) Prototype Class Registered: tile07
+Factory.h(76) Prototype Class Registered: tile08
+Factory.h(76) Prototype Class Registered: tile09
+Factory.h(76) Prototype Class Registered: tile10
+Factory.h(76) Prototype Class Registered: tile11
+Factory.h(76) Prototype Class Registered: tile12
+Factory.h(76) Prototype Class Registered: tile13
+Factory.h(76) Prototype Class Registered: tile14
+Factory.h(76) Prototype Class Registered: tile15
 EventManager.cpp(15) Event Subsribec:OnAddPoints
 EventManager.cpp(15) Event Subsribec:OnPlayerDead

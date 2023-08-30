@@ -6,7 +6,36 @@
 			"tag":"Ground",
 			"prototype":true,
 			"transform":{
-				"scale": 4
+				"scale": 2
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"Textures/tileset.png",
+					"source":[
+						16,
+						16,
+						16,
+						16
+					]
+				},
+				{
+					"type":"Box2DPhysicsComponent",
+					"isDynamic":false
+				},
+				{
+					"type":"Box2DCollisionComponent",
+					"restitution":0
+				}
+			]
+		},
+		{
+			"type":"Actor",
+			"name":"tile02",
+			"tag":"Ground",
+			"prototype":true,
+			"transform":{
+				"scale": 2
 			},
 			"components":[
 				{
@@ -31,11 +60,127 @@
 		},
 		{
 			"type":"Actor",
-			"name":"tile02",
+			"name":"tile03",
 			"tag":"Ground",
 			"prototype":true,
 			"transform":{
-				"scale": 4
+				"scale": 2
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"Textures/tileset.png",
+					"source":[
+						32,
+						16,
+						16,
+						16
+					]
+				},
+				{
+					"type":"Box2DPhysicsComponent",
+					"isDynamic":false
+				},
+				{
+					"type":"Box2DCollisionComponent",
+					"restitution":0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tile04",
+			"tag": "Ground",
+			"prototype": true,
+			"transform": {
+				"scale": 2
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Textures/tileset.png",
+					"source": [
+						16,
+						32,
+						16,
+						16
+					]
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"isDynamic": false
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"restitution": 0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tile05",
+			"tag": "Ground",
+			"prototype": true,
+			"transform": {
+				"scale": 2
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Textures/tileset.png",
+					"source": [
+						0,
+						16,
+						16,
+						16
+					]
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"isDynamic": false
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"restitution": 0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tile06",
+			"tag": "Ground",
+			"prototype": true,
+			"transform": {
+				"scale": 2
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Textures/tileset.png",
+					"source": [
+						32,
+						0,
+						16,
+						16
+					]
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"isDynamic": false
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"restitution": 0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tile07",
+			"tag": "Ground",
+			"prototype": true,
+			"transform": {
+				"scale": 2
 			},
 			"components": [
 				{
@@ -59,32 +204,274 @@
 			]
 		},
 		{
+			"type": "Actor",
+			"name": "tile08",
+			"tag": "Ground",
+			"prototype": true,
+			"transform": {
+				"scale": 2
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Textures/tileset.png",
+					"source": [
+						0,
+						0,
+						16,
+						16
+					]
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"isDynamic": false
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"restitution": 0
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "tile09",
+			"tag": "Ground",
+			"prototype": true,
+			"transform": {
+				"scale": 2
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Textures/tileset.png",
+					"source": [
+						32,
+						32,
+						16,
+						16
+					]
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"isDynamic": false
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"restitution": 0
+				}
+			]
+		},
+			{
+			"type":"Actor",
+			"name":"tile10",
+			"tag":"Ground",
+			"prototype":true,
+			"transform":{
+				"scale": 2
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"Textures/tileset.png",
+					"source":[
+						48,
+						16,
+						16,
+						16
+					]
+				},
+				{
+					"type":"Box2DPhysicsComponent",
+					"isDynamic":false
+				},
+				{
+					"type":"Box2DCollisionComponent",
+					"restitution":0
+				}
+			]
+		},
+			{
+			"type":"Actor",
+			"name":"tile11",
+			"tag":"Ground",
+			"prototype":true,
+			"transform":{
+				"scale": 2
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"Textures/tileset.png",
+					"source":[
+						0,
+						32,
+						16,
+						16
+					]
+				},
+				{
+					"type":"Box2DPhysicsComponent",
+					"isDynamic":false
+				},
+				{
+					"type":"Box2DCollisionComponent",
+					"restitution":0
+				}
+			]
+		},
+			{
+			"type":"Actor",
+			"name":"tile12",
+			"tag":"Ground",
+			"prototype":true,
+			"transform":{
+				"scale": 2
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"Textures/tileset.png",
+					"source":[
+						32,
+						48,
+						16,
+						16
+					]
+				},
+				{
+					"type":"Box2DPhysicsComponent",
+					"isDynamic":false
+				},
+				{
+					"type":"Box2DCollisionComponent",
+					"restitution":0
+				}
+			]
+		},
+			{
+			"type":"Actor",
+			"name":"tile13",
+			"tag":"Ground",
+			"prototype":true,
+			"transform":{
+				"scale": 2
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"Textures/tileset.png",
+					"source":[
+						48,
+						32,
+						16,
+						16
+					]
+				},
+				{
+					"type":"Box2DPhysicsComponent",
+					"isDynamic":false
+				},
+				{
+					"type":"Box2DCollisionComponent",
+					"restitution":0
+				}
+			]
+		},
+			{
+			"type":"Actor",
+			"name":"tile14",
+			"tag":"Ground",
+			"prototype":true,
+			"transform":{
+				"scale": 2
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"Textures/tileset.png",
+					"source":[
+						0,
+						48,
+						16,
+						16
+					]
+				},
+				{
+					"type":"Box2DPhysicsComponent",
+					"isDynamic":false
+				},
+				{
+					"type":"Box2DCollisionComponent",
+					"restitution":0
+				}
+			]
+		},
+			{
+			"type":"Actor",
+			"name":"tile15",
+			"tag":"Ground",
+			"prototype":true,
+			"transform":{
+				"scale": 2
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"textureName":"Textures/tileset.png",
+					"source":[
+						48,
+						0,
+						16,
+						16
+					]
+				},
+				{
+					"type":"Box2DPhysicsComponent",
+					"isDynamic":false
+				},
+				{
+					"type":"Box2DCollisionComponent",
+					"restitution":0
+				}
+			]
+		},
+		{
 			"type":"Actor",
 			"name":"World",
 			"transform":{
 				"position":[
-					32,
-					32
+					16,
+					16
 				]
 			},
 			"components":[
 				{
 					"type":"TilemapComponent",
-					"numColumns": 13,
-					"numRows": 10,
-					"size": [64, 64],
-					"tileNames": ["", "tile01", "tile02"],
+					"numColumns": 26,
+					"numRows": 20,
+					"size": [32, 32],
+					"tileNames": ["", "tile01", "tile02", "tile03", "tile04", "tile05", "tile06", "tile07", "tile08", "tile09", "tile10", "tile11", "tile12", "tile13", "tile14", "tile15"],
 					"tiles": [
-							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-							0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0,
-							2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2,
-							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-							1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-							1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+							1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1,
+							3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1,
+							3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1,
+							1, 2, 2, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 2, 2, 2, 6, 0, 0, 8, 2, 1, 1,
+							1, 1, 1, 1, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1, 1, 3, 0, 0, 5, 1, 1, 1,
+							1, 4, 4, 4, 4, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 4, 4, 4, 9, 0, 0, 11, 4, 1, 1,
+							3, 0, 0, 0, 0, 0, 0, 8, 2, 2, 2, 2, 2, 2, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1,
+							3, 0, 0, 0, 0, 0, 8, 1, 1, 1, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1,
+							3, 0, 0, 0, 0, 8, 1, 1, 1, 1, 4, 4, 4, 4, 4, 9, 0, 14, 7, 7, 7, 7, 7, 7, 1, 1,
+							3, 0, 0, 0, 8, 1, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1,							
+							3, 0, 0, 14, 4, 4, 4, 4, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1,
+							1, 6, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 5, 1,
+							1, 1, 6, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 5, 1,
+							1, 4, 4, 7, 7, 12, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 5, 1,
+							3, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 5, 1,							
+		          3, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 5, 1,
+							3, 0, 0, 0, 0, 0, 14, 7, 7, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1,
+							3, 0, 0, 0, 0, 0, 0, 0, 0, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+							1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+							1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 							]
 				}    
 			]
