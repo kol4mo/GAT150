@@ -283,6 +283,37 @@
 			]
 		},
 		{
+			"type": "Actor",
+			"name": "Rollback",
+			"persistent": true,
+			"prototype": true,
+			"transform": {
+				"position": [
+					528,
+					272
+				],
+				"scale": 1,
+				"rotation": 0
+			},
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "Textures/Assets/Rollback.png"
+				},
+				{
+					"type": "Box2DPhysicsComponent",
+					"constrainAngle": true,
+					"gravityScale": 0,
+					"isDynamic": false
+				},
+				{
+					"type": "Box2DCollisionComponent",
+					"resitution": 0,
+					"isTrigger":  true
+				}
+			]
+		},
+		{
 			"type": "Interactable",
 			"name": "Lever",
 			"persistent": true,

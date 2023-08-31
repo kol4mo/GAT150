@@ -31,9 +31,20 @@ namespace hop {
 		float dir = 0;
 
 		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_E)) {
+
+			if (m_scene->GetActorByName("Rollback")) {
+				m_scene->GetActorByName("Rollback")->destroyed = true;
+			}
+
 			SavedPosition = transform.position;
+			auto rollback = INSTANTIATE(Actor, "Rollback");
+			rollback->transform.position = SavedPosition;
+			rollback->Initialize();
+			m_scene->Add(std::move(rollback));
 		}
 		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_F) && SavedPosition.x != -1 && SavedPosition.y != -1) {
+
+			m_scene->GetActorByName("Rollback")->destroyed = true;
 			m_physicsComponent->setPosition(SavedPosition);
 			transform.position = SavedPosition;
 			SavedPosition = { -1, -1 };

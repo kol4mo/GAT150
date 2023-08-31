@@ -19,6 +19,7 @@ Factory.h(76) Prototype Class Registered: Danger
 Factory.h(76) Prototype Class Registered: Coin
 Factory.h(76) Prototype Class Registered: Crate
 Factory.h(76) Prototype Class Registered: DissapearingBlock
+Factory.h(76) Prototype Class Registered: Rollback
 Factory.h(76) Prototype Class Registered: Player
 Factory.h(76) Prototype Class Registered: Bee
 Factory.h(76) Prototype Class Registered: tile01
