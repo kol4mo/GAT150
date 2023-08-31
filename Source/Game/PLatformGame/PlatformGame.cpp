@@ -71,12 +71,27 @@ void PlatformGame::update(float dt)
 		coin2->transform.position = { 752, 80 };
 		coin2->Initialize();
 		m_scene->Add(std::move(coin2));
-
+		auto d1 = INSTANTIATE(Actor, "Danger");
+		d1->transform.position = { 476, 128 };
+		d1->Initialize();
+		m_scene->Add(std::move(d1));
+		auto d2 = INSTANTIATE(Actor, "Danger");
+		d2->transform.position = { 476 + 64, 480 - 32 };
+		d2->Initialize();
+		m_scene->Add(std::move(d2));
+		auto player = INSTANTIATE(Actor, "Player");
+		player->Initialize();
+		m_scene->Add(std::move(player));
 	}
 	m_state = eState::Game;
 	break;
 	case PlatformGame::eState::Game: 
-		if (dynamic_cast<hop::Player*>(m_scene->GetActorByName("Player"))->win) {
+		if (m_scene->GetActorByName("Player") == nullptr) {
+			auto player = INSTANTIATE(Actor, "Player");
+			player->Initialize();
+			m_scene->Add(std::move(player));
+		}
+		if (m_scene->GetActorByName("Player") != nullptr && dynamic_cast<hop::Player*>(m_scene->GetActorByName("Player"))->win) {
 			m_scene->GetActorByName("Title")->active = true;
 		}
 		break;

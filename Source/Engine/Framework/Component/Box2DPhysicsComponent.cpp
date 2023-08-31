@@ -32,6 +32,8 @@ namespace hop
 		m_velocity = B2VEC2_TO_VEC2(m_body->GetLinearVelocity());
 	}
 
+	
+
 	void Box2DPhysicsComponent::ApplyForce(const vec2& force)
 	{
 		m_body->ApplyForceToCenter(VEC2_TO_B2VEC2(force), true);
@@ -45,6 +47,13 @@ namespace hop
 	void Box2DPhysicsComponent::SetVelocity(const vec2& velocity)
 	{
 		m_body->SetLinearVelocity(VEC2_TO_B2VEC2(velocity));
+	}
+
+	void Box2DPhysicsComponent::setPosition(const vec2& position)
+	{
+		auto temp = PhysicsSystem::instance().ScreenToWorld(position);
+		m_body->SetTransform((*(b2Vec2*)(&(temp))), m_body->GetAngle());
+	
 	}
 
 	void Box2DPhysicsComponent::Read(const json_t& value)

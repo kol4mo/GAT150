@@ -29,6 +29,16 @@ namespace hop {
 		bool onGround = (groundCount > 0);
 		//move
 		float dir = 0;
+
+		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_E)) {
+			SavedPosition = transform.position;
+		}
+		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_F) && SavedPosition.x != -1 && SavedPosition.y != -1) {
+			m_physicsComponent->setPosition(SavedPosition);
+			transform.position = SavedPosition;
+			SavedPosition = { -1, -1 };
+
+		}
 		
 		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) dir = -1;
 		if (hop::g_inputSystem.GetKeyDown(SDL_SCANCODE_D)) dir = 1;

@@ -47,6 +47,38 @@
 			]
 		},
 		{
+			"type": "Actor",
+			"name": "Danger",
+			"tag": "Enemy",
+			"persistent": true,
+			"prototype":  true,
+			"transform": {
+				"position": [
+					425,
+					325
+				],
+				"scale": 2,
+				"rotation": 0
+			},
+			"components": [
+					{
+						"type": "SpriteComponent",
+						"textureName": "Textures/Assets/danger.png",
+						"origin": [0, 0]
+					},
+					{
+						"type": "Box2DPhysicsComponent",
+						"constrainAngle": true,
+						"isDynamic": false
+					},
+					{
+						"type": "Box2DCollisionComponent",
+						"resitution": 0,
+						"isTrigger": true
+					}
+			]
+		},
+		{
 			"type": "Collectable",
 			"name": "Coin",
 			"tag": "Coin",
@@ -304,6 +336,7 @@
 			"name": "Player",
 			"tag": "Player",
 			"persistent": true,
+			"prototype": true,
 			"m_speed": 60,
 			"maxSpeed": 10,
 			"m_jump": 5,

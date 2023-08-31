@@ -18,6 +18,7 @@ namespace hop
 		virtual void ApplyForce(const vec2& force) override;
 		virtual void ApplyTorque(float torque) override;
 		virtual void SetVelocity(const vec2& velocity) override;
+		virtual void setPosition(const vec2& position) override;
 
 		friend class Box2DCollisionComponent;
 

@@ -30,6 +30,8 @@ namespace hop {
 		int coins = 0;
 		bool hasKey = false;
 
+		vec2 SavedPosition = {-1, -1};
+
 		hop::PhysicsComponent* m_physicsComponent = nullptr;
 		class SpriteAnimRenderComponent* m_SpriteComponent = nullptr;
 	};
